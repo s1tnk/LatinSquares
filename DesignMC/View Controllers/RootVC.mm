@@ -39,7 +39,7 @@
     Move20btn.momentary = YES;
     [Move20btn setFrame:CGRectMake(2+(3*self.view.frame.size.width)/4, 46.0, self.view.frame.size.width/4-4, 40.0)];
     Move20btn.segmentedControlStyle = UISegmentedControlStyleBar;
-    Move20btn.tintColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+    Move20btn.tintColor = [UIColor colorWithWhite:0.7 alpha:1.0];
     [Move20btn addTarget:self action:@selector(move20Squares:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:Move20btn];
 
@@ -49,13 +49,20 @@
     [self.view addSubview:sv];
     touchedArr = [[NSMutableArray alloc] initWithCapacity:200];
     
-    UIBarButtonItem *aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"About"
+    self.title = @"Latin Squares";
+    UIBarButtonItem *aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"FAQ"
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:self
                                                                 action:@selector(showAbout:)];
     self.navigationItem.leftBarButtonItem = aboutBtn;    
-    self.title = @"Latin Squares";
     [aboutBtn release];
+    
+    UIBarButtonItem *toolsBtn = [[UIBarButtonItem alloc] initWithTitle:@"How many..?"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:self
+                                                                action:@selector(showTools:)];
+    self.navigationItem.rightBarButtonItem = toolsBtn;    
+    [toolsBtn release];
     
     loading = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-30, self.view.frame.size.height/2-60, 60, 60)] retain];
     [loading setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
@@ -97,6 +104,64 @@
     }
     [UIView commitAnimations];
 }
+-(void)showTools:(id)sender
+{
+    NSString *iso;
+    NSString *nonIso;
+    
+    switch ([n intValue]) {
+        case 2:
+            iso = @"1";
+            nonIso = @"2";
+            break;
+        case 3:
+            iso = @"1";
+            nonIso = @"12";
+            break;
+        case 4:
+            iso = @"2";
+            nonIso = @"576";
+            break;
+        case 5:
+            iso = @"2";
+            nonIso = @"161280";
+            break;
+        case 6:
+            iso = @"12";
+            nonIso = @"812851200";
+            break;
+        case 7:
+            iso = @"147";
+            nonIso = @"61479419904000";
+            break;
+        case 8:
+            iso = @"283657";
+            nonIso = @"108776032459082960000";
+            break;
+        case 9:
+            iso = @"19270853541";
+            nonIso = @"5.524751496156892e+27";
+            break;
+        case 10:
+            iso = @"34817397894749940";
+            nonIso = @"9.98243765821304e+36";
+            break;
+        case 11:
+            iso = @"2.036029552582883e+24";
+            nonIso = @"7.769668361717701e+47";
+            break;
+        case 12:
+            iso = @"??";
+            nonIso = @"??";
+            break;
+        default:
+            break;
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"How many Latin squares of order %d are there?", [n intValue]] message:[NSString stringWithFormat:@"Main class:\n%@\n\nTotal:\n%@", iso,nonIso] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
+    [alert show];
+    [alert release];
+}
+
 -(void)showAbout:(id)sender
 {
     AboutVC *aboutVC = [[AboutVC alloc] init];
@@ -105,7 +170,6 @@
     [self presentModalViewController:navVC animated:YES];
     [navVC release];
 }
-
 -(void)showCyclicSquare
 {
     [self showLoading];
@@ -223,7 +287,7 @@
 
 - (NSInteger)numberOfColumsInHorizontalPickerView:(CUIHorizontalPickerView *)horizontalPickerView
 {
-    return 19;
+    return 11;
 }
 
 - (void)viewDidUnload

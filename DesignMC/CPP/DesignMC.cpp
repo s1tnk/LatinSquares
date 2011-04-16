@@ -194,9 +194,9 @@ bool Square::isMainDiagonalTransversal()
 }
 
 // Setters
-void Square::setPath( const char* path )
+void Square::setBlocks( blockSet bs )
 {
-    this->path = path;
+    this->blocks = bs;
 }
 
 // Getters

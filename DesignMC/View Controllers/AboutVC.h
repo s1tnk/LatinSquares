@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface AboutVC : UIViewController {
+@interface AboutVC : UIViewController <UIWebViewDelegate>{
     
 }
 

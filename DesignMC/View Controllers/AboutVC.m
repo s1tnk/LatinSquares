@@ -33,7 +33,7 @@
                                                                 target:self
                                                                 action:@selector(closeAbout:)];
     self.navigationItem.rightBarButtonItem = closeBtn;    
-    self.title = @"About";
+    self.title = @"FAQ";
     [closeBtn release];
 }
 -(void)closeAbout:(id)sender
@@ -64,6 +64,14 @@
 - (void)dealloc
 {
     [super dealloc];
+}
+-(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

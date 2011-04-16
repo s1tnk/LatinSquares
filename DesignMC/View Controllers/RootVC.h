@@ -21,6 +21,7 @@
     UIView *loading;
     UISegmentedControl *Move1btn, *Move20btn;
     CUIHorizontalPickerView *hpv;
+    NSMutableDictionary *plistSquares;
 }
 -(void)showCyclicSquare;
 -(void)drawSquare;

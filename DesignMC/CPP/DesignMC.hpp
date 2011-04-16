@@ -41,7 +41,7 @@ public:
     blockSet getBlocks();
     void manyStepsImproper( int j );
     bool isMainDiagonalTransversal();
-    void setPath( const char* path );
+    void setBlocks( blockSet bs );
     string stringifyBlocks( blockSet bs );
     ~Square();
 };
