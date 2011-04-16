@@ -19,6 +19,8 @@
     [self.view setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
 	[self.view release];
 
+    
+    
     hpv = [[[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)] retain];
     hpv.delegate = self;
     hpv.dataSource = self;
@@ -298,7 +300,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)dealloc

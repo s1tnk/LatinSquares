@@ -24,6 +24,7 @@
 		A1C48AB71359DA2B008A923D /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C48AA91359DA2B008A923D /* AboutVC.m */; };
 		A1C48AB81359DA2B008A923D /* RootVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48AAB1359DA2B008A923D /* RootVC.mm */; };
 		A1D3BCB5135A11EF006721AD /* Squares.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1D3BCB4135A11EF006721AD /* Squares.plist */; };
+		A1D3BCC6135A23E2006721AD /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */; };
 		A1FC95F51359927600F5606D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FC95F41359927600F5606D /* UIKit.framework */; };
 		A1FC95F71359927600F5606D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FC95F61359927600F5606D /* Foundation.framework */; };
 		A1FC95F91359927600F5606D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FC95F81359927600F5606D /* CoreGraphics.framework */; };
@@ -56,6 +57,7 @@
 		A1C48AAA1359DA2B008A923D /* RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
 		A1C48AAB1359DA2B008A923D /* RootVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootVC.mm; sourceTree = "<group>"; };
 		A1D3BCB4135A11EF006721AD /* Squares.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Squares.plist; sourceTree = "<group>"; };
+		A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A1FC95F01359927600F5606D /* DesignMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FC95F41359927600F5606D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1FC95F61359927600F5606D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +116,7 @@
 		A1C48AA01359DA2B008A923D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */,
 				A1203B37135A021F006B5736 /* Default@2x.png */,
 				A1203B35135A01B7006B5736 /* Default.png */,
 				A1203B2D1359F63E006B5736 /* about.html */,
@@ -251,6 +254,7 @@
 				A1203B36135A01B7006B5736 /* Default.png in Resources */,
 				A1203B38135A0220006B5736 /* Default@2x.png in Resources */,
 				A1D3BCB5135A11EF006721AD /* Squares.plist in Resources */,
+				A1D3BCC6135A23E2006721AD /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
