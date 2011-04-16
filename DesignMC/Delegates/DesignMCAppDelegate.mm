@@ -15,8 +15,10 @@
 {
     // Override point for customization after application launch.
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	RootVC *rootViewController = [[RootVC alloc] init];
-	[window addSubview: rootViewController.view];
+   	RootVC *rootViewController = [[RootVC alloc] init];
+    navVC = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    [rootViewController release];
+	[window addSubview: navVC.view];
     [window makeKeyAndVisible];
     return YES;
 }
@@ -63,6 +65,7 @@
 - (void)dealloc
 {
     [window release];
+    [navVC release];
     [super dealloc];
 }
 

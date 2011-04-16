@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "DesignMCWrapper.h"
 #import "CUIHorizontalPickerView.h"
 #import "AboutVC.h"
@@ -17,7 +18,15 @@
     NSMutableArray *touchedArr;
     UIView *ls;
     DesignMCWrapper *s;
+    UIView *loading;
+    UISegmentedControl *Move1btn, *Move20btn;
+    CUIHorizontalPickerView *hpv;
 }
-
+-(void)showCyclicSquare;
 -(void)drawSquare;
+-(void)showLoading;
+-(void)hideLoading;
+-(void)createSquare;
+-(void)move1;
+-(void)move20;
 @end

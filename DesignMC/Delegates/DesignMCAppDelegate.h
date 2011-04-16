@@ -11,6 +11,7 @@
 
 @interface DesignMCAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
+    UINavigationController *navVC;
 }
 
 @end

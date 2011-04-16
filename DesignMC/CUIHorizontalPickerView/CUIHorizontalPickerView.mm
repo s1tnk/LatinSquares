@@ -18,7 +18,7 @@
     
 	if (self)
 	{
-		scrollViewItemPadding = 0.12;
+		scrollViewItemPadding = 0.15;
 		
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 		{
@@ -64,6 +64,7 @@
 	[subView setScrollView:scrollView];
 	[subView addSubview:scrollView];
 	[self addSubview:subView];
+    [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width*5, 0.0) animated:NO];
 }
 
 - (void) scrollViewWillBeginDecelerating: (UIScrollView *) sv

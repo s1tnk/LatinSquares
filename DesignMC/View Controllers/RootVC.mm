@@ -19,22 +19,29 @@
     [self.view setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
 	[self.view release];
 
-    CUIHorizontalPickerView *hpv = [[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)];
+    hpv = [[[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)] retain];
     hpv.delegate = self;
     hpv.dataSource = self;
     [hpv reloadComponent];
     [self.view addSubview:hpv];
     [hpv release];
     
-    n = [[NSNumber alloc] initWithInt:2];
+    n = [[NSNumber alloc] initWithInt:7];
     
-    UISegmentedControl * btn = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Generate"]];
-    btn.momentary = YES;
-    [btn setFrame:CGRectMake(2.0, 46.0, self.view.frame.size.width-4, 40.0)];
-    btn.segmentedControlStyle = UISegmentedControlStyleBar;
-    //btn.tintColor = [UIColor redColor];
-    [btn addTarget:self action:@selector(displaySquare:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:btn];
+    Move1btn = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Move to next square"]];
+    Move1btn.momentary = YES;
+    [Move1btn setFrame:CGRectMake(2.0, 46.0, (3*self.view.frame.size.width)/4-4, 40.0)];
+    Move1btn.segmentedControlStyle = UISegmentedControlStyleBar;
+    [Move1btn addTarget:self action:@selector(moveToNextSquare:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:Move1btn];
+    
+    Move20btn = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"+20"]];
+    Move20btn.momentary = YES;
+    [Move20btn setFrame:CGRectMake(2+(3*self.view.frame.size.width)/4, 46.0, self.view.frame.size.width/4-4, 40.0)];
+    Move20btn.segmentedControlStyle = UISegmentedControlStyleBar;
+    Move20btn.tintColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+    [Move20btn addTarget:self action:@selector(move20Squares:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:Move20btn];
 
     sv = [[UIScrollView alloc] init];
     sv.delegate = self;
@@ -42,32 +49,101 @@
     [self.view addSubview:sv];
     touchedArr = [[NSMutableArray alloc] initWithCapacity:200];
     
-    UIToolbar *t = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44)];
     UIBarButtonItem *aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"About"
-                                                                           style:UIBarButtonItemStyleBordered
-                                                                          target:self
-                                                                          action:@selector(showAbout:)];
-    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [t setItems:[NSArray arrayWithObjects:flex, aboutBtn, nil] animated:YES];
-    [flex release];
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:self
+                                                                action:@selector(showAbout:)];
+    self.navigationItem.leftBarButtonItem = aboutBtn;    
+    self.title = @"Latin Squares";
     [aboutBtn release];
-    [self.view addSubview:t];
-    [t release];
+    
+    loading = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-30, self.view.frame.size.height/2-60, 60, 60)] retain];
+    [loading setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
+    UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    act.frame = CGRectMake(20.0, 20.0, 20, 20);
+    [act startAnimating];
+    
+    loading.layer.cornerRadius = 10.0;
+    [loading addSubview:act];
+    loading.alpha = 0;
+    [self.view addSubview:loading];
+
+    [self showCyclicSquare];
+}
+-(void)showLoading
+{
+    Move1btn.enabled = NO;
+    Move20btn.enabled = NO;
+    [hpv setUserInteractionEnabled:NO];
+    
+    [UIView beginAnimations:@"showLoading" context:nil];
+    [UIView setAnimationDelegate:self];
+    {
+        loading.alpha = 1.0;
+    }
+    [UIView commitAnimations];
+
+}
+-(void)hideLoading
+{
+    Move1btn.enabled = YES;
+    Move20btn.enabled = YES;
+    [hpv setUserInteractionEnabled:YES];
+    
+    [UIView beginAnimations:@"hideLoading" context:nil];
+    [UIView setAnimationDelegate:self];
+    {
+        loading.alpha = 0.0;
+    }
+    [UIView commitAnimations];
 }
 -(void)showAbout:(id)sender
 {
     AboutVC *aboutVC = [[AboutVC alloc] init];
-    aboutVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentModalViewController:aboutVC animated:YES];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:aboutVC];
     [aboutVC release];
+    [self presentModalViewController:navVC animated:YES];
+    [navVC release];
 }
-- (void)displaySquare:(id)sender
+
+-(void)showCyclicSquare
 {
-    [s autorelease];
-    s = [[DesignMCWrapper alloc] init];
-    s.square = new Square([n intValue]);
-    s.square->manyStepsProper(10);
-    [self drawSquare];
+    [self showLoading];
+    [self performSelectorInBackground:@selector(createSquare) withObject:nil];
+}
+-(void)createSquare
+{
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+        l = n;
+        s = [[DesignMCWrapper alloc] init];
+        s.square = new Square([n intValue]);
+        [self drawSquare];
+    [pool release];
+}
+
+- (void)moveToNextSquare:(id)sender
+{
+    [self showLoading];
+    [self performSelectorInBackground:@selector(move1) withObject:nil];
+}
+-(void)move1
+{
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+        s.square->manyStepsProper(1);
+        [self drawSquare];
+    [pool release];
+}
+- (void)move20Squares:(id)sender
+{
+    [self showLoading];
+    [self performSelectorInBackground:@selector(move20) withObject:nil];
+}
+-(void)move20
+{
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+        s.square->manyStepsProper(20);
+        [self drawSquare];
+    [pool release];
 }
 
 -(void)drawSquare
@@ -108,6 +184,7 @@
             [ls addSubview:button];
         }
     }
+    [self hideLoading];
 }
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
@@ -117,15 +194,18 @@
 -(void)touchedCell:(id)sender
 {
     UIButton *b = (UIButton *)[sv viewWithTag:[sender tag]];
+    UILabel *tmpLabel = (UILabel *)[b viewWithTag:500];
     if([touchedArr containsObject:[NSNumber numberWithInt:[sender tag]]])
     {
-        [b viewWithTag:500].backgroundColor = [UIColor whiteColor];
+        tmpLabel.backgroundColor = [UIColor whiteColor];
+        tmpLabel.textColor = [UIColor blackColor];
         [touchedArr removeObject:[NSNumber numberWithInt:[sender tag]]];
     }
     else
     {
         [touchedArr addObject:[NSNumber numberWithInt:[sender tag]]];
-        [b viewWithTag:500].backgroundColor = [UIColor colorWithRed:1.0 green:0.4 blue:0.5 alpha:1.0];
+        tmpLabel.backgroundColor = [UIColor colorWithRed:192/255.0 green:36/255.0 blue:13/255.0 alpha:1.0];
+        tmpLabel.textColor = [UIColor whiteColor];
     }
 }
 
@@ -138,6 +218,7 @@
 {
     [n autorelease];
     n = [[NSNumber numberWithInt:column+2] retain];
+    [self showCyclicSquare];
 }
 
 - (NSInteger)numberOfColumsInHorizontalPickerView:(CUIHorizontalPickerView *)horizontalPickerView

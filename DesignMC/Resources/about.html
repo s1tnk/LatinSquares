@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <style>
+            body
+            {
+                background-color:#333333;
+                color:#ffffff;
+                font-family:helvetica;
+            }
+            h1
+            {
+                font-size:27px;
+                text-align:center;
+                border-bottom:2px solid #ffffff;
+            }
+            h2
+            {
+                background-color:#C0240D;
+                padding:2px;
+                text-align:center;
+            }
+            h3
+            {
+                background-color:#444444;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>About Latin Squares</h1>
+    <p>A Latin square is an (n x n) grid of cells. Each cell contains exactly one symbol from the set {1, 2, ..., n} and every row and column contains each symbol exactly once. This app generates Latin squares uniformly at random using Jacobson and Matthews'  Markov chain. If you'd like to know more about how their method works, I urge you to read their paper.</p>
+
+    <h2>FAQ</h2>
+        
+    <h3>Why, when I click to move to the next square, does it ofen not change?</h3>
+    <p>To ensure that the Markov chain is ergodic, it is important that the underlying graph is not bipartite. Putting these loops in the algorithm ensure that the graph is non-bipartite.</p>
+
+    <h3>How many proper squares do I pass through when I click to move?</h3>
+    <p>You move from the square you are on to the first proper square found.</p>
+
+    <h3>Is this Markov chain rapidly mixing?</h3>
+    <p>Nobody knows, but everyone who I've every spoken to about it would guess that it was.</p>
+
+    <h2>LINKS</h2>
+        
+    <p>Here are some links you might enjoy reading:</p>
+    <a href='http://onlinelibrary.wiley.com/doi/10.1002/(SICI)1520-6610(1996)4:6%3C405::AID-JCD3%3E3.0.CO;2-J/abstract'>Generating Uniformly Distributed Latin Squares</a><br/>
+    <a href='http://en.wikipedia.org/wiki/Latin_square'>Latin Squares on Wikipedia</a><br/>
+    </body>
+</html>
