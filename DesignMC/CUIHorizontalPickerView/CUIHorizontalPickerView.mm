@@ -22,7 +22,7 @@
 		
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 		{
-			scrollViewItemPadding *= 0.3;
+			scrollViewItemPadding *= 0.5;
 		}
 		
 		scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake((self.frame.size.width-self.frame.size.width*scrollViewItemPadding)/2, 0.0, self.frame.size.width*scrollViewItemPadding, self.frame.size.height)];
