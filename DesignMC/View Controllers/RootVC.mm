@@ -49,7 +49,6 @@
     sv.delegate = self;
     sv.frame = CGRectMake(0, 2*44.0, self.view.frame.size.width, self.view.frame.size.height-44*3);
     [self.view addSubview:sv];
-    touchedArr = [[NSMutableArray alloc] initWithCapacity:200];
     
     self.title = @"Latin Squares";
     UIBarButtonItem *aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"FAQ"
@@ -214,6 +213,9 @@
 
 -(void)drawSquare
 {
+    if(touchedArr)
+        [touchedArr autorelease];
+    touchedArr = [[[NSMutableArray alloc] initWithCapacity:200] retain];
     int k =[n intValue];
     CGSize cellSize = CGSizeMake(50,50);
     float padding = 1.0;
