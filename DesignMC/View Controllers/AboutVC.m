@@ -23,6 +23,7 @@
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height-44)];
     [self.view addSubview:webView];
+    [webView setDelegate:self];
     NSString *bundle = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html" inDirectory:NO];
 	NSURL *url = [NSURL fileURLWithPath:bundle];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
