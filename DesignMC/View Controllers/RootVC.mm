@@ -255,10 +255,10 @@
         while(!s.square->IsTransversal(b))
         {
             k++;
-            if(k>10000)
+            if(k>50000)
             {
                 [self interfaceEnabled:YES];
-                [self subtleMessage:@"Nothing found" withDelay:1.0];
+                [self subtleMessage:@"Timed out" withDelay:1.0];
                 return;
             }
             b = s.square->diagonalMove(b, 1);
