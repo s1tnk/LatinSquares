@@ -78,6 +78,7 @@
 {
     if(!b)
     {
+        sv.userInteractionEnabled = NO;
         aboutBtn.enabled = NO;
         toolsBtn.enabled = NO;
         Move1btn.enabled = NO;
@@ -86,6 +87,7 @@
     } 
     else
     {
+        sv.userInteractionEnabled = YES;
         aboutBtn.enabled = YES;
         toolsBtn.enabled = YES;
         Move1btn.enabled = YES;
@@ -233,11 +235,9 @@
             iso = @"2.036029552582883e+24";
             nonIso = @"7.769668361717701e+47";
             break;
-        case 12:
+        default:
             iso = @"??";
             nonIso = @"??";
-            break;
-        default:
             break;
     }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"How many Latin squares of order %d are there?", [n intValue]] message:[NSString stringWithFormat:@"Main class:\n%@\n\nTotal:\n%@", iso,nonIso] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
@@ -255,7 +255,7 @@
         while(!s.square->IsTransversal(b))
         {
             k++;
-            if(k>100000)
+            if(k>10000)
             {
                 [self interfaceEnabled:YES];
                 [self subtleMessage:@"Nothing found" withDelay:1.0];
@@ -414,7 +414,7 @@
 
 - (NSInteger)numberOfColumsInHorizontalPickerView:(CUIHorizontalPickerView *)horizontalPickerView
 {
-    return 11;
+    return 10;
 }
 
 - (void)viewDidUnload
