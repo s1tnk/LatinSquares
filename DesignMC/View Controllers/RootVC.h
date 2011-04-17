@@ -12,7 +12,7 @@
 #import "CUIHorizontalPickerView.h"
 #import "AboutVC.h"
 
-@interface RootVC : UIViewController <UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource> {
+@interface RootVC : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource> {
     UIScrollView *sv;
     NSNumber *n,*l;
     NSMutableArray *touchedArr;
@@ -22,6 +22,8 @@
     UISegmentedControl *Move1btn, *Move20btn;
     CUIHorizontalPickerView *hpv;
     NSMutableDictionary *plistSquares;
+    UIBarButtonItem *toolsBtn, *aboutBtn;
+    BOOL HasUserMovedFromCyclicSquare;
 }
 -(void)showCyclicSquare;
 -(void)drawSquare;
@@ -30,4 +32,10 @@
 -(void)createSquare;
 -(void)move1;
 -(void)move20;
+-(void)enumerate;
+-(void)findTransversal;
+-(void)touchedCell:(id)sender;
+-(void)subtleMessage:(NSString *)str withDelay:(float)d;
+-(void)interfaceEnabled:(BOOL)b;
+-(void)colourGridSquare:(int)tag;
 @end

@@ -43,5 +43,13 @@ public:
     bool isMainDiagonalTransversal();
     void setBlocks( blockSet bs );
     string stringifyBlocks( blockSet bs );
+    bool IsTransversal( blockSet bs );
+    blockSet crossTwoBlocks( block b1, block b2 );
+    blockSet generateDiagonal();
+    blockSet findTransversal();
+    void sampleDiagonalSpace();
+    blockSet diagonalMove( blockSet diagonal, int mixingTime );
+    int factorial( int n );
+    void findAllTransversals();
     ~Square();
 };

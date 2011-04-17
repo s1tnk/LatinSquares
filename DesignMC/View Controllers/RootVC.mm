@@ -19,8 +19,6 @@
     [self.view setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
 	[self.view release];
 
-    
-    
     hpv = [[[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)] retain];
     hpv.delegate = self;
     hpv.dataSource = self;
@@ -51,18 +49,16 @@
     [self.view addSubview:sv];
     
     self.title = @"Latin Squares";
-    UIBarButtonItem *aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"FAQ"
+    aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"FAQ"
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:self
                                                                 action:@selector(showAbout:)];
     self.navigationItem.leftBarButtonItem = aboutBtn;    
     [aboutBtn release];
     
-    UIBarButtonItem *toolsBtn = [[UIBarButtonItem alloc] initWithTitle:@"How many..?"
-                                                                 style:UIBarButtonItemStyleBordered
-                                                                target:self
-                                                                action:@selector(showTools:)];
-    self.navigationItem.rightBarButtonItem = toolsBtn;    
+    toolsBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showTools:)];
+    self.navigationItem.rightBarButtonItem = toolsBtn;
+    
     [toolsBtn release];
     
     loading = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-30, self.view.frame.size.height/2-60, 60, 60)] retain];
@@ -78,34 +74,120 @@
 
     [self showCyclicSquare];
 }
+-(void)interfaceEnabled:(BOOL)b
+{
+    if(!b)
+    {
+        aboutBtn.enabled = NO;
+        toolsBtn.enabled = NO;
+        Move1btn.enabled = NO;
+        Move20btn.enabled = NO;
+        [hpv setUserInteractionEnabled:NO];
+    } 
+    else
+    {
+        aboutBtn.enabled = YES;
+        toolsBtn.enabled = YES;
+        Move1btn.enabled = YES;
+        Move20btn.enabled = YES;
+        [hpv setUserInteractionEnabled:YES];
+    }
+    
+}
 -(void)showLoading
 {
-    Move1btn.enabled = NO;
-    Move20btn.enabled = NO;
-    [hpv setUserInteractionEnabled:NO];
-    
-    [UIView beginAnimations:@"showLoading" context:nil];
-    [UIView setAnimationDelegate:self];
-    {
-        loading.alpha = 1.0;
-    }
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5 
+                          delay:0 
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         loading.alpha = 1.0;
+                     }  
+                     completion:nil
+     ];
 
 }
 -(void)hideLoading
 {
-    Move1btn.enabled = YES;
-    Move20btn.enabled = YES;
-    [hpv setUserInteractionEnabled:YES];
+    [UIView animateWithDuration:0.5 
+                          delay:0 
+                        options:nil 
+                     animations:^{
+                                     loading.alpha = 0.0;
+                                 }  
+                     completion:^(BOOL finished)
+                                 {
+                                 }
+     ];
+}
+-(void)subtleMessage:(NSString *)str withDelay:(float)d
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-80, self.view.frame.size.height/2-50, 160, 80)];
+    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, view.frame.size.width-10, view.frame.size.height-10)];
+    [label setTextAlignment:UITextAlignmentCenter];
+    [label setText:str];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setAdjustsFontSizeToFitWidth:YES];
+    [label setNumberOfLines:0];
+    [label setLineBreakMode:UILineBreakModeWordWrap];
+    [view addSubview:label];
+    [label release];
+    [view setAlpha:0];
+    view.layer.cornerRadius = 10.0;
+    [self.view addSubview:view];
+    [UIView animateWithDuration:0.5 
+                          delay:0 
+                        options:nil 
+                     animations:^{
+                         view.alpha = 1.0;                                    
+                     }  
+                     completion:nil
+     ];
     
-    [UIView beginAnimations:@"hideLoading" context:nil];
-    [UIView setAnimationDelegate:self];
-    {
-        loading.alpha = 0.0;
-    }
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.5 
+                          delay:d
+                        options:nil 
+                     animations:^{
+                                    view.alpha = 0;                                    
+                                }  
+                     completion:^(BOOL finished)
+                                {
+                                    [view release];
+                                }
+     ];
 }
 -(void)showTools:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:nil otherButtonTitles:@"Find Transversal", @"How many..?",nil];
+    [actionSheet showInView:self.view];
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            if([n intValue] == 2)
+            {
+                [self subtleMessage:@"No Latin square on 2 points has a transversal." withDelay:2.5];
+                break;
+            }
+            if(([n intValue]%2 == 0 && !HasUserMovedFromCyclicSquare))
+            {
+                [self subtleMessage:@"This square has no transversals." withDelay:2.5];
+                break;
+            }
+
+            [self showLoading];
+            [self performSelectorInBackground:@selector(findTransversal) withObject:nil];
+            break;
+        case 1:
+            [self enumerate];
+            break;
+        default:
+            break;
+    }
+}
+-(void)enumerate
 {
     NSString *iso;
     NSString *nonIso;
@@ -162,7 +244,41 @@
     [alert show];
     [alert release];
 }
-
+-(void)findTransversal
+{
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+        // clear any coloured squares first.
+        [self drawSquare];
+        [self interfaceEnabled:NO];
+        blockSet b = s.square->generateDiagonal(); 
+        int k = 0;
+        while(!s.square->IsTransversal(b))
+        {
+            k++;
+            if(k>100000)
+            {
+                [self interfaceEnabled:YES];
+                [self subtleMessage:@"Nothing found" withDelay:1.0];
+                return;
+            }
+            b = s.square->diagonalMove(b, 1);
+               
+        }
+        for(int i=0; i<b.size(); i++)
+        {
+            [self colourGridSquare:b[i][0]*s.square->getVType()+b[i][1]-s.square->getVType()+2];
+        }
+        [self interfaceEnabled:YES];
+        [self hideLoading];
+        
+    [pool release];
+}
+-(void)colourGridSquare:(int)tag
+{
+    UIButton *tmpBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    tmpBtn.tag = tag;
+    [self touchedCell:tmpBtn];
+}
 -(void)showAbout:(id)sender
 {
     AboutVC *aboutVC = [[AboutVC alloc] init];
@@ -173,6 +289,7 @@
 }
 -(void)showCyclicSquare
 {
+    HasUserMovedFromCyclicSquare = NO;
     [self showLoading];
     [self performSelectorInBackground:@selector(createSquare) withObject:nil];
 }
@@ -188,7 +305,9 @@
 
 - (void)moveToNextSquare:(id)sender
 {
+    [self interfaceEnabled:NO];
     [self showLoading];
+    HasUserMovedFromCyclicSquare = YES;
     [self performSelectorInBackground:@selector(move1) withObject:nil];
 }
 -(void)move1
@@ -200,7 +319,9 @@
 }
 - (void)move20Squares:(id)sender
 {
+    [self interfaceEnabled:NO];
     [self showLoading];
+    HasUserMovedFromCyclicSquare = YES;
     [self performSelectorInBackground:@selector(move20) withObject:nil];
 }
 -(void)move20
@@ -252,7 +373,9 @@
             [ls addSubview:button];
         }
     }
+    [self interfaceEnabled:YES];
     [self hideLoading];
+    
 }
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {

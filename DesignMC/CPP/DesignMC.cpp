@@ -228,3 +228,151 @@ string Square::stringifyBlocks( blockSet bs )
     str += "]";
     return str;
 }
+
+bool Square::IsTransversal( blockSet bs )
+{
+    if (bs.size() != (unsigned)this->vType[0])
+        return false;
+    
+    block points;
+    for(unsigned int i = 0; i < bs.size(); i++)
+    {
+        points.push_back(bs[i][0]);
+        points.push_back(bs[i][1]);
+        points.push_back(bs[i][2]);
+    }
+    
+    sort(points.begin(), points.end());
+    for (int i = 0; i < vType[0]+vType[1]+vType[2]; i++)
+    {
+        if (i!=points[i])
+            return false;
+    }
+    
+    return true;
+}
+blockSet Square::crossTwoBlocks( block b1, block b2 )
+{
+    blockSet newBlocks;
+    block a,b;
+    a.push_back(b1[0]);
+    a.push_back(b2[1]);
+    
+    b.push_back(b2[0]);
+    b.push_back(b1[1]);
+    
+    // Now need to find what points are located in these new positions.
+    for(unsigned int i = 0; i < this->blocks.size(); i++)
+    {
+        if(this->blocks[i][0] == a[0] && this->blocks[i][1] == a[1])
+        {
+            a.push_back(this->blocks[i][2]);
+            break;
+        }
+    }
+    for(unsigned int i = 0; i < this->blocks.size(); i++)
+    {
+        if(this->blocks[i][0] == b[0] && this->blocks[i][1] == b[1])
+        {
+            b.push_back(this->blocks[i][2]);
+            break;
+        }
+    }
+    newBlocks.push_back(a);
+    newBlocks.push_back(b);
+    return newBlocks;
+}
+blockSet Square::generateDiagonal()
+{
+    blockSet diagonal;
+    for(int i = 0; i < this->vType[0]; i ++)
+    {
+        diagonal.push_back(this->blocks[i*vType[0]+i]);
+    }
+    return diagonalMove(diagonal, 100);
+}
+blockSet Square::findTransversal()
+{
+    //first, get any diagonal
+
+    blockSet diagonal = generateDiagonal();
+    //Now find a transversal
+    int k = 0;
+    while(!IsTransversal(diagonal))
+    {
+        k++;
+        diagonal = diagonalMove(diagonal, 1);
+        if(k>200000)
+        {
+            blockSet tmp;
+            return tmp;
+        }
+    }
+    return diagonal;
+}
+
+void Square::sampleDiagonalSpace()
+{
+    blockSet diagonal;
+    for(int i = 0; i < this->vType[0]; i ++)
+    {
+        diagonal.push_back(this->blocks[i*vType[0]+i]);
+    }
+    int total=0, trans=0;
+    while(total < 400000)
+    {
+        total++;
+        diagonal = diagonalMove(diagonal, 10);
+        if(IsTransversal(diagonal))
+            trans++;
+        //if(total % 1000 == 0)
+        
+    }
+    cout << trans<<" / "<<total <<" diagonals have been transversals (average = " << (double) factorial(vType[0])*(float)trans/total << ")\n";
+    
+}
+
+blockSet Square::diagonalMove( blockSet diagonal, int mixingTime )
+{
+    int j = 0;
+    while(j<mixingTime)
+    {
+        j++;
+        // select two blocks in the diagonal at random, and cross them
+        // note these blocks are allowed to be the same to ensure the
+        // underling graph is non-bipartite
+        
+        int b1 = (rand() % vType[0]);
+        int b2 = (rand() % vType[0]);
+        blockSet r = this->crossTwoBlocks(diagonal[b1], diagonal[b2]);
+        diagonal[b1] = r[0];
+        diagonal[b2] = r[1];
+    }
+    return diagonal;
+}
+
+int Square::factorial( int n )
+{
+    if (n == 1)
+        return 1;
+    else
+        return n*factorial(n-1);
+}
+
+void Square::findAllTransversals()
+{
+    vector<blockSet> foundTrans;
+    int i=0;
+    while(i < 50000)
+    {
+        i++;
+        blockSet newTrans = findTransversal();
+        vector<blockSet>::iterator myIt = find (foundTrans.begin(), foundTrans.end(), newTrans);
+        if(myIt==foundTrans.end())
+        {
+            foundTrans.push_back(newTrans);
+            cout << "(" << foundTrans.size() << "/" << i <<") \t" << this->stringifyBlocks(newTrans) << endl;
+        }
+    }	
+    cout << "\n\nTOTAL (after "<< i<<" searches)  = " << foundTrans.size() ;
+}
