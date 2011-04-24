@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1203B2E1359F63E006B5736 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = A1203B2D1359F63E006B5736 /* about.html */; };
 		A1203B36135A01B7006B5736 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B35135A01B7006B5736 /* Default.png */; };
 		A1203B38135A0220006B5736 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B37135A021F006B5736 /* Default@2x.png */; };
+		A13DD5D613634FF40005655F /* NotableSquares.mm in Sources */ = {isa = PBXBuildFile; fileRef = A13DD5D513634FF40005655F /* NotableSquares.mm */; };
+		A13DD5D9136370FF0005655F /* NotableSquares.plist in Resources */ = {isa = PBXBuildFile; fileRef = A13DD5D8136370FF0005655F /* NotableSquares.plist */; };
+		A1A4CD5413634CDA00A72098 /* Theory.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A4CD5313634CDA00A72098 /* Theory.m */; };
+		A1A4CD5713634E4600A72098 /* Root.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1A4CD5613634E4600A72098 /* Root.mm */; };
 		A1C48AAC1359DA2B008A923D /* DesignMC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A941359DA2B008A923D /* DesignMC.cpp */; };
 		A1C48AAD1359DA2B008A923D /* DesignMCWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A971359DA2B008A923D /* DesignMCWrapper.mm */; };
 		A1C48AAE1359DA2B008A923D /* CUIHorizontalPickerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A9A1359DA2B008A923D /* CUIHorizontalPickerView.mm */; };
@@ -21,10 +24,10 @@
 		A1C48AB41359DA2B008A923D /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C48AA41359DA2B008A923D /* Icon-Small@2x.png */; };
 		A1C48AB51359DA2B008A923D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C48AA51359DA2B008A923D /* Icon.png */; };
 		A1C48AB61359DA2B008A923D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C48AA61359DA2B008A923D /* Icon@2x.png */; };
-		A1C48AB71359DA2B008A923D /* AboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C48AA91359DA2B008A923D /* AboutVC.m */; };
-		A1C48AB81359DA2B008A923D /* RootVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48AAB1359DA2B008A923D /* RootVC.mm */; };
-		A1D3BCB5135A11EF006721AD /* Squares.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1D3BCB4135A11EF006721AD /* Squares.plist */; };
+		A1C48AB71359DA2B008A923D /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C48AA91359DA2B008A923D /* ContentView.m */; };
+		A1C48AB81359DA2B008A923D /* RandomSquare.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48AAB1359DA2B008A923D /* RandomSquare.mm */; };
 		A1D3BCC6135A23E2006721AD /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */; };
+		A1F24A5113640C2800834CD9 /* Theory.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1F24A5013640C2800834CD9 /* Theory.plist */; };
 		A1FC95F51359927600F5606D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FC95F41359927600F5606D /* UIKit.framework */; };
 		A1FC95F71359927600F5606D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FC95F61359927600F5606D /* Foundation.framework */; };
 		A1FC95F91359927600F5606D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FC95F81359927600F5606D /* CoreGraphics.framework */; };
@@ -33,9 +36,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1203B2D1359F63E006B5736 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		A1203B35135A01B7006B5736 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A1203B37135A021F006B5736 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A13DD5D413634FF40005655F /* NotableSquares.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotableSquares.h; sourceTree = "<group>"; };
+		A13DD5D513634FF40005655F /* NotableSquares.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NotableSquares.mm; sourceTree = "<group>"; };
+		A13DD5D8136370FF0005655F /* NotableSquares.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NotableSquares.plist; path = ../NotableSquares.plist; sourceTree = "<group>"; };
+		A1A4CD5213634CDA00A72098 /* Theory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theory.h; sourceTree = "<group>"; };
+		A1A4CD5313634CDA00A72098 /* Theory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theory.m; sourceTree = "<group>"; };
+		A1A4CD5513634E4600A72098 /* Root.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Root.h; sourceTree = "<group>"; };
+		A1A4CD5613634E4600A72098 /* Root.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Root.mm; sourceTree = "<group>"; };
 		A1C48A941359DA2B008A923D /* DesignMC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DesignMC.cpp; sourceTree = "<group>"; };
 		A1C48A951359DA2B008A923D /* DesignMC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DesignMC.hpp; sourceTree = "<group>"; };
 		A1C48A961359DA2B008A923D /* DesignMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignMCWrapper.h; sourceTree = "<group>"; };
@@ -52,12 +61,12 @@
 		A1C48AA41359DA2B008A923D /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		A1C48AA51359DA2B008A923D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A1C48AA61359DA2B008A923D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		A1C48AA81359DA2B008A923D /* AboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVC.h; sourceTree = "<group>"; };
-		A1C48AA91359DA2B008A923D /* AboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVC.m; sourceTree = "<group>"; };
-		A1C48AAA1359DA2B008A923D /* RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
-		A1C48AAB1359DA2B008A923D /* RootVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootVC.mm; sourceTree = "<group>"; };
-		A1D3BCB4135A11EF006721AD /* Squares.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Squares.plist; sourceTree = "<group>"; };
+		A1C48AA81359DA2B008A923D /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		A1C48AA91359DA2B008A923D /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
+		A1C48AAA1359DA2B008A923D /* RandomSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomSquare.h; sourceTree = "<group>"; };
+		A1C48AAB1359DA2B008A923D /* RandomSquare.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RandomSquare.mm; sourceTree = "<group>"; };
 		A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		A1F24A5013640C2800834CD9 /* Theory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Theory.plist; path = ../Theory.plist; sourceTree = "<group>"; };
 		A1FC95F01359927600F5606D /* DesignMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FC95F41359927600F5606D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1FC95F61359927600F5606D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,14 +128,14 @@
 				A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */,
 				A1203B37135A021F006B5736 /* Default@2x.png */,
 				A1203B35135A01B7006B5736 /* Default.png */,
-				A1203B2D1359F63E006B5736 /* about.html */,
 				A1C48AA11359DA2B008A923D /* Icon-72.png */,
 				A1C48AA21359DA2B008A923D /* Icon-Small-50.png */,
 				A1C48AA31359DA2B008A923D /* Icon-Small.png */,
 				A1C48AA41359DA2B008A923D /* Icon-Small@2x.png */,
 				A1C48AA51359DA2B008A923D /* Icon.png */,
 				A1C48AA61359DA2B008A923D /* Icon@2x.png */,
-				A1D3BCB4135A11EF006721AD /* Squares.plist */,
+				A13DD5D8136370FF0005655F /* NotableSquares.plist */,
+				A1F24A5013640C2800834CD9 /* Theory.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -134,10 +143,16 @@
 		A1C48AA71359DA2B008A923D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1C48AA81359DA2B008A923D /* AboutVC.h */,
-				A1C48AA91359DA2B008A923D /* AboutVC.m */,
-				A1C48AAA1359DA2B008A923D /* RootVC.h */,
-				A1C48AAB1359DA2B008A923D /* RootVC.mm */,
+				A1C48AA81359DA2B008A923D /* ContentView.h */,
+				A1C48AA91359DA2B008A923D /* ContentView.m */,
+				A1C48AAA1359DA2B008A923D /* RandomSquare.h */,
+				A1C48AAB1359DA2B008A923D /* RandomSquare.mm */,
+				A1A4CD5213634CDA00A72098 /* Theory.h */,
+				A1A4CD5313634CDA00A72098 /* Theory.m */,
+				A1A4CD5513634E4600A72098 /* Root.h */,
+				A1A4CD5613634E4600A72098 /* Root.mm */,
+				A13DD5D413634FF40005655F /* NotableSquares.h */,
+				A13DD5D513634FF40005655F /* NotableSquares.mm */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -250,11 +265,11 @@
 				A1C48AB41359DA2B008A923D /* Icon-Small@2x.png in Resources */,
 				A1C48AB51359DA2B008A923D /* Icon.png in Resources */,
 				A1C48AB61359DA2B008A923D /* Icon@2x.png in Resources */,
-				A1203B2E1359F63E006B5736 /* about.html in Resources */,
 				A1203B36135A01B7006B5736 /* Default.png in Resources */,
 				A1203B38135A0220006B5736 /* Default@2x.png in Resources */,
-				A1D3BCB5135A11EF006721AD /* Squares.plist in Resources */,
 				A1D3BCC6135A23E2006721AD /* Default-Portrait~ipad.png in Resources */,
+				A13DD5D9136370FF0005655F /* NotableSquares.plist in Resources */,
+				A1F24A5113640C2800834CD9 /* Theory.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +286,11 @@
 				A1C48AAE1359DA2B008A923D /* CUIHorizontalPickerView.mm in Sources */,
 				A1C48AAF1359DA2B008A923D /* CUIHorizontalPickerViewSubView.mm in Sources */,
 				A1C48AB01359DA2B008A923D /* DesignMCAppDelegate.mm in Sources */,
-				A1C48AB71359DA2B008A923D /* AboutVC.m in Sources */,
-				A1C48AB81359DA2B008A923D /* RootVC.mm in Sources */,
+				A1C48AB71359DA2B008A923D /* ContentView.m in Sources */,
+				A1C48AB81359DA2B008A923D /* RandomSquare.mm in Sources */,
+				A1A4CD5413634CDA00A72098 /* Theory.m in Sources */,
+				A1A4CD5713634E4600A72098 /* Root.mm in Sources */,
+				A13DD5D613634FF40005655F /* NotableSquares.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

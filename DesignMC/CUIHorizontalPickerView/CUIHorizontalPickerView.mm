@@ -125,7 +125,7 @@
 	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
 	CGContextClosePath(context);
 	CGContextFillPath(context);
-	CGContextClip(context);
+//	CGContextClip(context);
 	
 	CGRect pickerRectWhiteBoxStroke = CGRectMake(whiteBoxPadding+gapBetweenBorderAndWhiteBox, 
 								   whiteBoxPadding+gapBetweenBorderAndWhiteBox, 
@@ -149,10 +149,10 @@
 	size_t num_locations2 = 4;
 	CGFloat locations2[4] = {0.0, 0.4, 0.6, 1.0};
 	CGFloat components2[16] = {  
-		0/255.0, 0/255.0, 0/255.0, 0.3,
+		0/255.0, 0/255.0, 0/255.0, 0.5,
 		0/255.0, 0/255.0, 0/255.0, 0.0,
 		0/255.0, 0/255.0, 0/255.0, 0.0,
-		0/255.0, 0/255.0, 0/255.0, 0.3,
+		0/255.0, 0/255.0, 0/255.0, 0.5,
 	};
 	
 	CGColorSpaceRef myColorspace2 = CGColorSpaceCreateDeviceRGB();

@@ -1,5 +1,5 @@
 //
-//  RootVC.h
+//  RandomSquare.h
 //  RLS
 //
 //  Created by Andy Drizen on 11/04/2011.
@@ -10,26 +10,26 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DesignMCWrapper.h"
 #import "CUIHorizontalPickerView.h"
-#import "AboutVC.h"
 
-@interface RootVC : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource> {
+@interface RandomSquare : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource> {
     UIScrollView *sv;
-    NSNumber *n,*l;
     NSMutableArray *touchedArr;
     UIView *ls;
     DesignMCWrapper *s;
     UIView *loading;
     UISegmentedControl *Move1btn, *Move20btn;
     CUIHorizontalPickerView *hpv;
+    NSDictionary *sqProperties;
     NSMutableDictionary *plistSquares;
     UIBarButtonItem *toolsBtn, *aboutBtn;
-    BOOL HasUserMovedFromCyclicSquare;
+    //BOOL HasUserMovedFromCyclicSquare;
+    BOOL AreBlocksPredefined;
 }
+-(id)initWithSquare:(DesignMCWrapper *)squareWrapper andProperties:(NSDictionary *)properties;
 -(void)showCyclicSquare;
 -(void)drawSquare;
 -(void)showLoading;
 -(void)hideLoading;
--(void)createSquare;
 -(void)move1;
 -(void)move20;
 -(void)enumerate;

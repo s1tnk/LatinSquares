@@ -1,0 +1,48 @@
+{
+	"squares":
+	[
+		{
+			"n":4,
+			"title":"Cyclic square on 4 points",
+			"description":"This is the cyclic square on 4 points, matey. Just using it as a test.",
+			"blocks":[
+						[0,4,8],
+						[0,5,9],
+						[0,6,10],
+						[0,7,11],
+						[1,4,9],
+						[1,5,10],
+						[1,6,11],
+						[1,7,8],
+						[2,4,10],
+						[2,5,11],
+						[2,6,8],
+						[2,7,9],
+						[3,4,11],
+						[3,5,8],
+						[3,6,9],
+						[3,7,10]
+					],
+			"highlight_blocks":[
+									[0,4,8],
+									[0,5,9]
+								],
+			"highlight_blocks_colours":[
+											{
+												"red":0.4,
+												"blue":0.4,
+												"green":1.0,
+												"alpha":1.0
+											},
+											{
+												"red":1.0,
+												"blue":0.4,
+												"green":1.0,
+												"alpha":1.0
+											}
+										],
+			"allowPertubation":false,
+			"allowRecolouring":true
+		}
+	]
+}

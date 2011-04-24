@@ -1,64 +1,58 @@
 //
-//  RootVC.m
+//  RandomSquare.m
 //  RLS
 //
 //  Created by Andy Drizen on 11/04/2011.
 //  Copyright 2011 Andy Drizen. All rights reserved.
 //
 
-#import "RootVC.h"
+#import "RandomSquare.h"
 
-@implementation RootVC
+@implementation RandomSquare
 
 #pragma mark - View lifecycle
 
+-(id)init
+{
+    self.title = @"Random Squares";
+    s = [[DesignMCWrapper alloc] init];
+    blockSet bs;
+    s.square = new Square(7, bs);
+    AreBlocksPredefined = NO;
+    return self;
+}
+-(id)initWithSquare:(DesignMCWrapper *)squareWrapper andProperties:(NSDictionary *)properties
+{
+    self.title = [properties valueForKey:@"title"];
+    s = [squareWrapper retain];
+    AreBlocksPredefined = YES;
+    sqProperties = [properties retain];
+    return self;
+}
 - (void)loadView
 {
-	CGRect frame = [UIScreen mainScreen].applicationFrame;
+    CGRect frame = [UIScreen mainScreen].applicationFrame;
 	self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 20.0, frame.size.width, frame.size.height )];
     [self.view setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
 	[self.view release];
-
-    hpv = [[[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)] retain];
-    hpv.delegate = self;
-    hpv.dataSource = self;
-    [hpv reloadComponent];
-    [self.view addSubview:hpv];
-    [hpv release];
-    
-    n = [[NSNumber alloc] initWithInt:7];
-    
-    Move1btn = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Move to next square"]];
-    Move1btn.momentary = YES;
-    [Move1btn setFrame:CGRectMake(2.0, 46.0, (3*self.view.frame.size.width)/4-4, 40.0)];
-    Move1btn.segmentedControlStyle = UISegmentedControlStyleBar;
-    [Move1btn addTarget:self action:@selector(moveToNextSquare:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:Move1btn];
-    
-    Move20btn = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"+20"]];
-    Move20btn.momentary = YES;
-    [Move20btn setFrame:CGRectMake(2+(3*self.view.frame.size.width)/4, 46.0, self.view.frame.size.width/4-4, 40.0)];
-    Move20btn.segmentedControlStyle = UISegmentedControlStyleBar;
-    Move20btn.tintColor = [UIColor colorWithWhite:0.7 alpha:1.0];
-    [Move20btn addTarget:self action:@selector(move20Squares:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:Move20btn];
-
-    sv = [[UIScrollView alloc] init];
+        
+    int toolbarOffset = 0;
+    if(!AreBlocksPredefined || [[sqProperties valueForKey:@"allowPertubation"] boolValue])
+    {
+        toolbarOffset = 1;
+        hpv = [[[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)] retain];
+        hpv.delegate = self;
+        hpv.dataSource = self;
+        [hpv reloadComponent];
+        [self.view addSubview:hpv];
+        [hpv release];
+    }
+    sv = [[UIScrollView alloc] initWithFrame:CGRectMake(0, toolbarOffset*44.0, self.view.frame.size.width, self.view.frame.size.height-44-44*toolbarOffset)];
     sv.delegate = self;
-    sv.frame = CGRectMake(0, 2*44.0, self.view.frame.size.width, self.view.frame.size.height-44*3);
     [self.view addSubview:sv];
-    
-    self.title = @"Latin Squares";
-    aboutBtn = [[UIBarButtonItem alloc] initWithTitle:@"FAQ"
-                                                                 style:UIBarButtonItemStyleBordered
-                                                                target:self
-                                                                action:@selector(showAbout:)];
-    self.navigationItem.leftBarButtonItem = aboutBtn;    
-    [aboutBtn release];
-    
+        
     toolsBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showTools:)];
     self.navigationItem.rightBarButtonItem = toolsBtn;
-    
     [toolsBtn release];
     
     loading = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-30, self.view.frame.size.height/2-60, 60, 60)] retain];
@@ -66,32 +60,34 @@
     UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     act.frame = CGRectMake(20.0, 20.0, 20, 20);
     [act startAnimating];
-    
     loading.layer.cornerRadius = 10.0;
     [loading addSubview:act];
     loading.alpha = 0;
     [self.view addSubview:loading];
 
-    [self showCyclicSquare];
+    if(!AreBlocksPredefined)
+    {
+        [self showLoading];
+        [self performSelectorInBackground:@selector(move20) withObject:nil];
+    }
+    else
+    {
+        [self showLoading];
+        [self drawSquare];
+    }
 }
 -(void)interfaceEnabled:(BOOL)b
 {
     if(!b)
     {
         sv.userInteractionEnabled = NO;
-        aboutBtn.enabled = NO;
         toolsBtn.enabled = NO;
-        Move1btn.enabled = NO;
-        Move20btn.enabled = NO;
         [hpv setUserInteractionEnabled:NO];
     } 
     else
     {
         sv.userInteractionEnabled = YES;
-        aboutBtn.enabled = YES;
         toolsBtn.enabled = YES;
-        Move1btn.enabled = YES;
-        Move20btn.enabled = YES;
         [hpv setUserInteractionEnabled:YES];
     }
     
@@ -161,29 +157,54 @@
 }
 -(void)showTools:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:nil otherButtonTitles:@"Find Transversal", @"How many..?",nil];
+    UIActionSheet *actionSheet;
+    if(AreBlocksPredefined)
+    {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:nil otherButtonTitles:@"Tell me about this square",nil];
+        actionSheet.tag = 2;
+    }
+    else
+    {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:@"Regenerate Square" otherButtonTitles:@"Find Transversal", @"How many..?",nil];
+        actionSheet.tag = 3;
+    }
+
     [actionSheet showInView:self.view];
+    [actionSheet release];
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:
-            if([n intValue] == 2)
+            if(actionSheet.tag==3)
             {
-                [self subtleMessage:@"No Latin square on 2 points has a transversal." withDelay:2.5];
-                break;
+                [self showLoading];
+                [self performSelectorInBackground:@selector(move20) withObject:nil];
             }
-            if(([n intValue]%2 == 0 && !HasUserMovedFromCyclicSquare))
+            else
             {
-                [self subtleMessage:@"This square has no transversals." withDelay:2.5];
-                break;
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"More Infomation" message:[sqProperties valueForKey:@"description"] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
             }
-
-            [self showLoading];
-            [self performSelectorInBackground:@selector(findTransversal) withObject:nil];
             break;
         case 1:
-            [self enumerate];
+            if(actionSheet.tag==3)
+            {
+                if(s.square->getVType() == 2)
+                {
+                    [self subtleMessage:@"No Latin square on 2 points has a transversal." withDelay:2.5];
+                    break;
+                }
+                [self showLoading];
+                [self performSelectorInBackground:@selector(findTransversal) withObject:nil];
+            }
+            break;
+        case 2:
+            if(actionSheet.tag==3)
+            {
+                [self enumerate];
+            }
             break;
         default:
             break;
@@ -194,7 +215,7 @@
     NSString *iso;
     NSString *nonIso;
     
-    switch ([n intValue]) {
+    switch (s.square->getVType()) {
         case 2:
             iso = @"1";
             nonIso = @"2";
@@ -240,7 +261,7 @@
             nonIso = @"??";
             break;
     }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"How many Latin squares of order %d are there?", [n intValue]] message:[NSString stringWithFormat:@"Main class:\n%@\n\nTotal:\n%@", iso,nonIso] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"How many Latin squares of order %d are there?", s.square->getVType()] message:[NSString stringWithFormat:@"Main class:\n%@\n\nTotal:\n%@", iso,nonIso] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
     [alert show];
     [alert release];
 }
@@ -279,35 +300,19 @@
     tmpBtn.tag = tag;
     [self touchedCell:tmpBtn];
 }
--(void)showAbout:(id)sender
-{
-    AboutVC *aboutVC = [[AboutVC alloc] init];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:aboutVC];
-    [aboutVC release];
-    [self presentModalViewController:navVC animated:YES];
-    [navVC release];
-}
+
 -(void)showCyclicSquare
 {
-    HasUserMovedFromCyclicSquare = NO;
+    //HasUserMovedFromCyclicSquare = NO;
     [self showLoading];
-    [self performSelectorInBackground:@selector(createSquare) withObject:nil];
-}
--(void)createSquare
-{
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-        l = n;
-        s = [[DesignMCWrapper alloc] init];
-        s.square = new Square([n intValue]);
-        [self drawSquare];
-    [pool release];
+    [self drawSquare];
 }
 
 - (void)moveToNextSquare:(id)sender
 {
     [self interfaceEnabled:NO];
     [self showLoading];
-    HasUserMovedFromCyclicSquare = YES;
+    //HasUserMovedFromCyclicSquare = YES;
     [self performSelectorInBackground:@selector(move1) withObject:nil];
 }
 -(void)move1
@@ -321,7 +326,7 @@
 {
     [self interfaceEnabled:NO];
     [self showLoading];
-    HasUserMovedFromCyclicSquare = YES;
+    //HasUserMovedFromCyclicSquare = YES;
     [self performSelectorInBackground:@selector(move20) withObject:nil];
 }
 -(void)move20
@@ -337,17 +342,17 @@
     if(touchedArr)
         [touchedArr autorelease];
     touchedArr = [[[NSMutableArray alloc] initWithCapacity:200] retain];
-    int k =[n intValue];
+
     CGSize cellSize = CGSizeMake(50,50);
     float padding = 1.0;
-    sv.minimumZoomScale = MIN(1.0, self.view.frame.size.width/(k*50));
+    sv.minimumZoomScale = MIN(1.0, self.view.frame.size.width/(s.square->getVType()*50));
     sv.maximumZoomScale = 1.0;
     sv.alwaysBounceHorizontal = YES;
     sv.alwaysBounceVertical = YES;
     
     [[sv subviews] makeObjectsPerformSelector: @selector(removeFromSuperview)];
     [ls autorelease];
-    ls = [[UIView alloc] initWithFrame:CGRectMake(MAX(0, sv.frame.size.width/2-cellSize.width*k/2), MAX(0,sv.frame.size.height/2-cellSize.height*k/2), cellSize.width*k, cellSize.height*k)];
+    ls = [[UIView alloc] initWithFrame:CGRectMake(MAX(0, sv.frame.size.width/2-cellSize.width*s.square->getVType()/2), MAX(0,sv.frame.size.height/2-cellSize.height*s.square->getVType()/2), cellSize.width*s.square->getVType(), cellSize.height*s.square->getVType())];
     [sv addSubview:ls];
     sv.contentSize = CGSizeMake(ls.frame.size.width, ls.frame.size.height);
     sv.zoomScale = sv.minimumZoomScale;
@@ -357,7 +362,8 @@
         {
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(i*cellSize.width+padding, j*cellSize.height+padding, cellSize.width-2*padding, cellSize.height-2*padding);
-            button.tag = i*s.square->getVType()+j+2;
+            button.tag = j*s.square->getVType()+i+2;
+            
             button.backgroundColor = [UIColor blackColor];
             [button addTarget:self action:@selector(touchedCell:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -367,7 +373,29 @@
             label.adjustsFontSizeToFitWidth = YES;
             label.textAlignment = UITextAlignmentCenter;
             label.tag=500;
-            label.text = [NSString stringWithFormat:@"%d",s.square->getBlocks()[i*s.square->getVType()+j][2]+1-2*s.square->getVType()];
+            if(AreBlocksPredefined && ![[sqProperties valueForKey:@"allowRecolouring"] boolValue])
+            {
+                button.userInteractionEnabled = NO;
+            }
+            if(AreBlocksPredefined)
+            {
+                NSArray *tmpArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:j], 
+                                     [NSNumber numberWithInt:s.square->getVType()+i], 
+                                     [NSNumber numberWithInt:s.square->getBlocks()[j*s.square->getVType()+i][2]],
+                                     nil];
+                if([[sqProperties valueForKey:@"highlight_blocks"] containsObject:tmpArray])
+                {
+                    NSNumber *index = [NSNumber numberWithInt:[[sqProperties valueForKey:@"highlight_blocks"] indexOfObject:tmpArray]];
+                    CGFloat r = [[[[sqProperties valueForKey:@"highlight_blocks_colours"] objectAtIndex:[index intValue]] valueForKey:@"red"] floatValue];
+                    CGFloat g = [[[[sqProperties valueForKey:@"highlight_blocks_colours"] objectAtIndex:[index intValue]] valueForKey:@"green"] floatValue];
+                    CGFloat b = [[[[sqProperties valueForKey:@"highlight_blocks_colours"] objectAtIndex:[index intValue]] valueForKey:@"blue"] floatValue];
+                    CGFloat a = [[[[sqProperties valueForKey:@"highlight_blocks_colours"] objectAtIndex:[index intValue]] valueForKey:@"alpha"] floatValue];
+                    
+                    label.backgroundColor = [UIColor colorWithRed:r green:g blue:b alpha:a];
+                    label.textColor = [UIColor whiteColor];
+                }
+            }
+            label.text = [NSString stringWithFormat:@"%d",s.square->getBlocks()[j*s.square->getVType()+i][2]+1-2*s.square->getVType()];
             [button addSubview:label];
             [label release];
             [ls addSubview:button];
@@ -407,9 +435,10 @@
 
 - (void)horizontalPickerView:(CUIHorizontalPickerView *)horizontalPickerView userDidScrollToColumn:(NSInteger)column
 {
-    [n autorelease];
-    n = [[NSNumber numberWithInt:column+2] retain];
-    [self showCyclicSquare];
+    blockSet bs;
+    s.square = new Square(column+2, bs);
+    [self showLoading];
+    [self performSelectorInBackground:@selector(move20) withObject:nil];
 }
 
 - (NSInteger)numberOfColumsInHorizontalPickerView:(CUIHorizontalPickerView *)horizontalPickerView
@@ -431,12 +460,19 @@
 - (void)dealloc
 {
     [super dealloc];
+    [s release];
     [sv release];
+    [Move1btn release];
+    [Move20btn release];
+    [loading release];
+    [touchedArr release];
+    [ls release];
 }
 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
+    NSLog(@"Received memory warning in RandomSquare.mm");
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.

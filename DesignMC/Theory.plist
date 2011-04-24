@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>theory</key>
+	<dict>
+		<key>books</key>
+		<array>
+			<dict>
+				<key>authors</key>
+				<string>Dénes, Keedwell, Beliavskaia</string>
+				<key>isbn</key>
+				<string>0444888993</string>
+				<key>isbn-13</key>
+				<string>978-0444888990</string>
+				<key>language</key>
+				<string>English</string>
+				<key>pages</key>
+				<integer>454</integer>
+				<key>publisher</key>
+				<string>North Holland</string>
+				<key>title</key>
+				<string>Latin squares: new developments in the theory and applications</string>
+				<key>url</key>
+				<string>http://www.amazon.co.uk/Latin-Squares-Developments-Applications-Mathematics/dp/0444888993/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1303631222&amp;amp;sr=1-1</string>
+				<key>year</key>
+				<integer>1991</integer>
+			</dict>
+		</array>
+		<key>fundamentals</key>
+		<array>
+			<dict>
+				<key>description</key>
+				<string>A Latin square or order n is a grid of n rows and n columns</string>
+				<key>short_description</key>
+				<string>A definition and common examples</string>
+				<key>title</key>
+				<string>What is a Latin square</string>
+			</dict>
+			<dict>
+				<key>description</key>
+				<string>Show table here</string>
+				<key>short_description</key>
+				<string>Is there an combinatorial explosion?</string>
+				<key>title</key>
+				<string>How many squares are there?</string>
+			</dict>
+		</array>
+		<key>papers</key>
+		<array>
+			<dict>
+				<key>authors</key>
+				<string>M. T. Jacobson and P. Matthews</string>
+				<key>journal</key>
+				<string>Journal of Combinatorial Designs</string>
+				<key>pages</key>
+				<string>405-437</string>
+				<key>title</key>
+				<string>Generating Uniformly Distributed Random Latin Squares</string>
+				<key>url</key>
+				<string>http://onlinelibrary.wiley.com/doi/10.1002/(SICI)1520-6610(1996)4:6%3C405::AID-JCD3%3E3.0.CO;2-J/abstract</string>
+				<key>volume</key>
+				<integer>4</integer>
+				<key>year</key>
+				<integer>1996</integer>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

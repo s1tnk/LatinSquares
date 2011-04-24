@@ -32,7 +32,7 @@ private:
     block vType;
     const char* path;
 public:
-    Square(int n);
+    Square(int n, blockSet bs);
     block generatePivot();
     void hopper();
     void oneStep();
@@ -41,7 +41,6 @@ public:
     blockSet getBlocks();
     void manyStepsImproper( int j );
     bool isMainDiagonalTransversal();
-    void setBlocks( blockSet bs );
     string stringifyBlocks( blockSet bs );
     bool IsTransversal( blockSet bs );
     blockSet crossTwoBlocks( block b1, block b2 );

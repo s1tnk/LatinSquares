@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootVC.h"
+#import "Root.h"
 
 @interface DesignMCAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    UINavigationController *navVC;
+    UINavigationController *navigationController;
 }
 
 @end

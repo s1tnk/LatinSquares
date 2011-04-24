@@ -8,19 +8,27 @@
 
 #include "DesignMC.hpp"
 
-Square::Square( int n )
+Square::Square( int n , blockSet bs)
 {
-    for(int i=0; i < n; i++)
-    {
-        
-        for(int j=0; j < n; j++)
+    if(bs.size()==0)
+    {        
+        for(int i=0; i < n; i++)
         {
-            block tmp_block (3);
-            int tmp_blockArr[] = {i,n + j,2*n + (i+j) % n};
-            tmp_block.assign(tmp_blockArr, tmp_blockArr+3);
-            blocks.push_back(tmp_block);
+            
+            for(int j=0; j < n; j++)
+            {
+                block tmp_block (3);
+                int tmp_blockArr[] = {i,n + j,2*n + (i+j) % n};
+                tmp_block.assign(tmp_blockArr, tmp_blockArr+3);
+                blocks.push_back(tmp_block);
+            }
         }
     }
+    else
+    {
+        this->blocks = bs;
+    }
+    //cout << "BLOCKS = " << this->stringifyBlocks(this->blocks);
     this->v = 3*n;
     this->t = 2;
     this->improper = false;
@@ -191,12 +199,6 @@ bool Square::isMainDiagonalTransversal()
     }
     
     return true;
-}
-
-// Setters
-void Square::setBlocks( blockSet bs )
-{
-    this->blocks = bs;
 }
 
 // Getters
