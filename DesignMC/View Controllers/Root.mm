@@ -192,23 +192,7 @@
             {
                 ContentView *contentView = [[ContentView alloc] init];
                 contentView.titleText = @"About";
-                contentView.html = @"<h3>What is a Latin square?</h3>"
-                "<p>A Latin square is an (n x n) grid of cells. Each cell contains exactly one symbol from the set {1, 2, ..., n} and every row and column contains each symbol exactly once. This app generates Latin squares uniformly at random using Jacobson and Matthews'  Markov chain. If you'd like to know more about how their method works, I urge you to read their paper, <a href='http://onlinelibrary.wiley.com/doi/10.1002/(SICI)1520-6610(1996)4:6%3C405::AID-JCD3%3E3.0.CO;2-J/abstract'>Generating Uniformly Distributed Latin Squares</a>.</p>"
-                
-                "<h3>Why, when I click to move to the next square, does it sometimes not change?</h3>"
-                "<p>To ensure that the Markov chain is ergodic, it is important that the underlying graph is not bipartite. Putting these loops in the algorithm ensure that the graph is non-bipartite.</p>"
-                
-                "<h3>Under, &quot;How many..?&quot;, what is the difference between main class and total?</h3>"
-                "<p>Take a look at the <a href='http://en.wikipedia.org/wiki/Latin_square'>wikipedia page on Latin Squares</a> - it does a good job of explaining it. Also, I've written <a href='http://www.irregularity.co.uk/2011/03/22/an-introduction-to-latin-squares-part-1/'>a blog post about it</a></p>"
-                
-                "<h3>How many proper squares do I pass through when I click to move?</h3>"
-                "<p>If you tap &quot;Move to next square&quot;, you move from the square you are on to the first proper square found. If you tap &quot;+20&quot;, then you will skip over 19 proper squares and land on the 20th.</p>"
-                
-                "<h3>Is this Markov chain rapidly mixing?</h3>"
-                "<p>Nobody knows, but everyone who I&#39;ve ever spoken to about it would guess that it was.</p>"
-                
-                "<h3>Who wrote this app?</h3>"
-                "<p>Andy Drizen, a London-based freelance iOS developer. For more of my work, you might like to <a href='http://www.andydrizen.co.uk'>visit my website.</a></p>";
+                contentView.html = @"<p>This app was made by Andy Drizen, a London-based freelance iOS developer. For more of my work, you might like to <a href='http://www.andydrizen.co.uk'>visit my website.</a></p>";
                 [self.navigationController pushViewController:contentView animated:YES];
                 [contentView release];
             }

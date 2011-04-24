@@ -35,11 +35,17 @@
     }
     else
     {
+        int w=320,h=480;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+		{
+            w=768;
+            h=960;
+        }
         NSString *htmlToDisplay = [NSString stringWithFormat:
                                    @"<html>"
                                    "<head>"
-                                   "<meta name=\"viewport\" content=\"width=320\" /> "
-                                   "<meta name=\"viewport\" content=\"height=436\" /> "
+                                   "<meta name=\"viewport\" content=\"width=%d\" /> "
+                                   "<meta name=\"viewport\" content=\"height=%d\" /> "
                                    "<style>"
                                    "body"
                                    "{"
@@ -65,7 +71,7 @@
                                    "}"
                                    "</style>"
                                    "</head>"
-                                   "<body>%@</body></html>", html];
+                                   "<body>%@</body></html>", w,h,html];
         [webView loadHTMLString:htmlToDisplay baseURL:nil];
     }
     self.title = titleText;
