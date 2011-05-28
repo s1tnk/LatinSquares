@@ -14,13 +14,36 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self createEditableCopyOfPlistIfNeeded];
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    Root *rootVC = [[Root alloc] initWithStyle:UITableViewStylePlain];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:rootVC];
-    [rootVC release];
+    LSTableView *tableView = [[LSTableView alloc] initWithStyle:UITableViewStylePlain];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:tableView];
+    [tableView release];
 	[window addSubview:navigationController.view];
     [window makeKeyAndVisible];
     return YES;
+}
+- (void)createEditableCopyOfPlistIfNeeded {
+	// First, test for existence - we don't want to wipe out a user's DB
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSString *writableContentPlistPath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"content.plist"];
+	NSString *defaultContentPlistPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"content.plist"];
+
+    //[fileManager removeItemAtPath:writableContentPlistPath error:nil];
+	
+	BOOL dbexists2 = [fileManager fileExistsAtPath:writableContentPlistPath];
+	if (!dbexists2) 
+    {
+		NSError *error;
+		BOOL success1 = [fileManager copyItemAtPath:defaultContentPlistPath toPath:writableContentPlistPath error:&error];
+		if (!success1)
+			NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+	}
+	
+}
+
+- (NSString *)applicationDocumentsDirectory {
+	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

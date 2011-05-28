@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Root.h"
+#import "LSTableView.h"
 
 @interface DesignMCAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     UINavigationController *navigationController;
 }
-
+- (void)createEditableCopyOfPlistIfNeeded;
+- (NSString *)applicationDocumentsDirectory;
 @end
