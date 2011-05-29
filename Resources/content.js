@@ -85,6 +85,12 @@
 			"items": [
 						[
 							{
+								"title":"Gerechte Designs with Rectangular Regions", 
+								"content_type": "LSWebsiteView",    
+								"subtitle":"J. Courtiel, E. R. Vaughan",
+								"html":"<p><a href='http://arxiv.org/pdf/1104.0637v1'>Download the PDF</a></p><h3>Abstract</h3><p>A <i>gerechte framework</i> is a partition of an n &times; n array into n regions of n cells each. A <i>realization</i> of a gerechte framework is a latin square of order n with the property that when its cells are partitioned by the framework, each region contains exactly one copy of each symbol. A <i>gerechte design</i> is a gerechte framework together with a realization. </p><p>We investigate gerechte frameworks where each region is a rectangle. It seems plausible that all such frameworks have realizations, and we present some progress towards answering this question. In particular, we show that for all positive integers s and t, any gerechte framework where each region is either an s &times; t rectangle or a t&times; s rectangle is realizable.</p>"
+							},
+							{
 								"title":"Monogamous Latin squares", 
 								"content_type": "LSWebsiteView",    
 								"subtitle":"P. Danziger, I. M. Wanless and B. S. Webb",
@@ -243,16 +249,23 @@
 			"cell_textLabel_fontSize":16,
 			"icon": "unsolved",
 			"title": "Unsolved Problems", 
-			"section_titles":["On the web","Other Problems"]
+			"section_titles":["Problems on the web","Problems"]
 			"items": [
 						[
 							{
-								"title":"Problems in Latin squares",
+								"title":"Wikipedia",
 								"content_type":"LSWebsiteView",
-								"subtitle":"From Wikipedia",
+								"subtitle":"",
 								"html":"",
 								"url":"http://en.wikipedia.org/wiki/Problems_in_Latin_squares"
-							}
+							} ,
+							{
+								"title":"Open Problem Garden",
+								"content_type":"LSWebsiteView",
+								"subtitle":"",
+								"html":"",
+								"url":"http://garden.irmacs.sfu.ca/?q=category/latin_square"
+							} 
 						],
 						[
 							{
@@ -271,7 +284,7 @@
 								"title":"Probaility of being a transversal",
 								"content_type": "LSWebsiteView",    
 								"subtitle":"",
-								"html":"<p>What is the probability that in a randomly generated Latin square, the main diagonal is a transversal?</p>"
+								"html":"<p>What is the probability that, in a randomly generated Latin square, the main diagonal is a transversal?</p>"
 							},
 							{
 								"title":"Decompose in to a few partial transversals",

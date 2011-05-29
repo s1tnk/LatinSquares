@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A1FC95EF1359927600F5606D"
-               BuildableName = "DesignMC.app"
-               BlueprintName = "DesignMC"
-               ReferencedContainer = "container:DesignMC.xcodeproj">
+               BuildableName = "LatinSquares.app"
+               BlueprintName = "LatinSquares"
+               ReferencedContainer = "container:LatinSquares.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -41,9 +41,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1FC95EF1359927600F5606D"
-            BuildableName = "DesignMC.app"
-            BlueprintName = "DesignMC"
-            ReferencedContainer = "container:DesignMC.xcodeproj">
+            BuildableName = "LatinSquares.app"
+            BlueprintName = "LatinSquares"
+            ReferencedContainer = "container:LatinSquares.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -60,9 +60,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A1FC95EF1359927600F5606D"
-            BuildableName = "DesignMC.app"
-            BlueprintName = "DesignMC"
-            ReferencedContainer = "container:DesignMC.xcodeproj">
+            BuildableName = "LatinSquares.app"
+            BlueprintName = "LatinSquares"
+            ReferencedContainer = "container:LatinSquares.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -14,7 +14,7 @@
 		A1C48AAD1359DA2B008A923D /* DesignMCWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A971359DA2B008A923D /* DesignMCWrapper.mm */; };
 		A1C48AAE1359DA2B008A923D /* CUIHorizontalPickerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A9A1359DA2B008A923D /* CUIHorizontalPickerView.mm */; };
 		A1C48AAF1359DA2B008A923D /* CUIHorizontalPickerViewSubView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A9C1359DA2B008A923D /* CUIHorizontalPickerViewSubView.mm */; };
-		A1C48AB01359DA2B008A923D /* DesignMCAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A9F1359DA2B008A923D /* DesignMCAppDelegate.mm */; };
+		A1C48AB01359DA2B008A923D /* LatinSquaresAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A9F1359DA2B008A923D /* LatinSquaresAppDelegate.mm */; };
 		A1C48AB11359DA2B008A923D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C48AA11359DA2B008A923D /* Icon-72.png */; };
 		A1C48AB21359DA2B008A923D /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C48AA21359DA2B008A923D /* Icon-Small-50.png */; };
 		A1C48AB31359DA2B008A923D /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C48AA31359DA2B008A923D /* Icon-Small.png */; };
@@ -57,15 +57,15 @@
 		A1A4CD5513634E4600A72098 /* LSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSTableView.h; sourceTree = "<group>"; };
 		A1A4CD5613634E4600A72098 /* LSTableView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LSTableView.mm; sourceTree = "<group>"; };
 		A1C48A941359DA2B008A923D /* DesignMC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DesignMC.cpp; sourceTree = "<group>"; };
-		A1C48A951359DA2B008A923D /* DesignMC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DesignMC.hpp; sourceTree = "<group>"; };
-		A1C48A961359DA2B008A923D /* DesignMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignMCWrapper.h; sourceTree = "<group>"; };
+		A1C48A951359DA2B008A923D /* DesignMC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; path = DesignMC.hpp; sourceTree = "<group>"; };
+		A1C48A961359DA2B008A923D /* DesignMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DesignMCWrapper.h; sourceTree = "<group>"; };
 		A1C48A971359DA2B008A923D /* DesignMCWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DesignMCWrapper.mm; sourceTree = "<group>"; };
 		A1C48A991359DA2B008A923D /* CUIHorizontalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIHorizontalPickerView.h; sourceTree = "<group>"; };
 		A1C48A9A1359DA2B008A923D /* CUIHorizontalPickerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CUIHorizontalPickerView.mm; sourceTree = "<group>"; };
 		A1C48A9B1359DA2B008A923D /* CUIHorizontalPickerViewSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIHorizontalPickerViewSubView.h; sourceTree = "<group>"; };
 		A1C48A9C1359DA2B008A923D /* CUIHorizontalPickerViewSubView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CUIHorizontalPickerViewSubView.mm; sourceTree = "<group>"; };
-		A1C48A9E1359DA2B008A923D /* DesignMCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignMCAppDelegate.h; sourceTree = "<group>"; };
-		A1C48A9F1359DA2B008A923D /* DesignMCAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DesignMCAppDelegate.mm; sourceTree = "<group>"; };
+		A1C48A9E1359DA2B008A923D /* LatinSquaresAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatinSquaresAppDelegate.h; sourceTree = "<group>"; };
+		A1C48A9F1359DA2B008A923D /* LatinSquaresAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LatinSquaresAppDelegate.mm; sourceTree = "<group>"; };
 		A1C48AA11359DA2B008A923D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		A1C48AA21359DA2B008A923D /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		A1C48AA31359DA2B008A923D /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -118,13 +118,13 @@
 		A1F042C01390094400EF08C8 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		A1F042C11390094400EF08C8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		A1F042C21390094400EF08C8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		A1FC95F01359927600F5606D /* DesignMC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignMC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1FC95F01359927600F5606D /* LatinSquares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatinSquares.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FC95F41359927600F5606D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1FC95F61359927600F5606D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A1FC95F81359927600F5606D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A1FC95FC1359927600F5606D /* DesignMC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DesignMC-Info.plist"; sourceTree = "<group>"; };
+		A1FC95FC1359927600F5606D /* LatinSquares-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LatinSquares-Info.plist"; sourceTree = "<group>"; };
 		A1FC95FE1359927600F5606D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A1FC96001359927600F5606D /* DesignMC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DesignMC-Prefix.pch"; sourceTree = "<group>"; };
+		A1FC96001359927600F5606D /* LatinSquares-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatinSquares-Prefix.pch"; sourceTree = "<group>"; };
 		A1FC96011359927600F5606D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,8 +171,8 @@
 		A1C48A9D1359DA2B008A923D /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				A1C48A9E1359DA2B008A923D /* DesignMCAppDelegate.h */,
-				A1C48A9F1359DA2B008A923D /* DesignMCAppDelegate.mm */,
+				A1C48A9E1359DA2B008A923D /* LatinSquaresAppDelegate.h */,
+				A1C48A9F1359DA2B008A923D /* LatinSquaresAppDelegate.mm */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 		A1FC95E51359927500F5606D = {
 			isa = PBXGroup;
 			children = (
-				A1FC95FA1359927600F5606D /* DesignMC */,
+				A1FC95FA1359927600F5606D /* LatinSquares */,
 				A1FC95F31359927600F5606D /* Frameworks */,
 				A1FC95F11359927600F5606D /* Products */,
 			);
@@ -275,7 +275,7 @@
 		A1FC95F11359927600F5606D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1FC95F01359927600F5606D /* DesignMC.app */,
+				A1FC95F01359927600F5606D /* LatinSquares.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A1FC95FA1359927600F5606D /* DesignMC */ = {
+		A1FC95FA1359927600F5606D /* LatinSquares */ = {
 			isa = PBXGroup;
 			children = (
 				A1F0427B139003DC00EF08C8 /* ContentManager.h */,
@@ -308,15 +308,15 @@
 				A1C48AA01359DA2B008A923D /* Resources */,
 				A1FC95FB1359927600F5606D /* Supporting Files */,
 			);
-			path = DesignMC;
+			path = LatinSquares;
 			sourceTree = "<group>";
 		};
 		A1FC95FB1359927600F5606D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A1FC95FC1359927600F5606D /* DesignMC-Info.plist */,
+				A1FC95FC1359927600F5606D /* LatinSquares-Info.plist */,
 				A1FC95FD1359927600F5606D /* InfoPlist.strings */,
-				A1FC96001359927600F5606D /* DesignMC-Prefix.pch */,
+				A1FC96001359927600F5606D /* LatinSquares-Prefix.pch */,
 				A1FC96011359927600F5606D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -325,9 +325,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1FC95EF1359927600F5606D /* DesignMC */ = {
+		A1FC95EF1359927600F5606D /* LatinSquares */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1FC96161359927600F5606D /* Build configuration list for PBXNativeTarget "DesignMC" */;
+			buildConfigurationList = A1FC96161359927600F5606D /* Build configuration list for PBXNativeTarget "LatinSquares" */;
 			buildPhases = (
 				A1FC95EC1359927600F5606D /* Sources */,
 				A1FC95ED1359927600F5606D /* Frameworks */,
@@ -337,9 +337,9 @@
 			);
 			dependencies = (
 			);
-			name = DesignMC;
-			productName = DesignMC;
-			productReference = A1FC95F01359927600F5606D /* DesignMC.app */;
+			name = LatinSquares;
+			productName = LatinSquares;
+			productReference = A1FC95F01359927600F5606D /* LatinSquares.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -350,7 +350,7 @@
 			attributes = {
 				ORGANIZATIONNAME = "Andy Drizen";
 			};
-			buildConfigurationList = A1FC95EA1359927500F5606D /* Build configuration list for PBXProject "DesignMC" */;
+			buildConfigurationList = A1FC95EA1359927500F5606D /* Build configuration list for PBXProject "LatinSquares" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -362,7 +362,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A1FC95EF1359927600F5606D /* DesignMC */,
+				A1FC95EF1359927600F5606D /* LatinSquares */,
 			);
 		};
 /* End PBXProject section */
@@ -398,7 +398,7 @@
 				A1C48AAD1359DA2B008A923D /* DesignMCWrapper.mm in Sources */,
 				A1C48AAE1359DA2B008A923D /* CUIHorizontalPickerView.mm in Sources */,
 				A1C48AAF1359DA2B008A923D /* CUIHorizontalPickerViewSubView.mm in Sources */,
-				A1C48AB01359DA2B008A923D /* DesignMCAppDelegate.mm in Sources */,
+				A1C48AB01359DA2B008A923D /* LatinSquaresAppDelegate.mm in Sources */,
 				A1C48AB71359DA2B008A923D /* LSWebsiteView.m in Sources */,
 				A1C48AB81359DA2B008A923D /* LSSquareView.mm in Sources */,
 				A1A4CD5713634E4600A72098 /* LSTableView.mm in Sources */,
@@ -438,7 +438,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -447,6 +448,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -456,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -463,6 +467,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -476,9 +481,9 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DesignMC/DesignMC-Prefix.pch";
-				INFOPLIST_FILE = "DesignMC/DesignMC-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
+				INFOPLIST_FILE = "LatinSquares/LatinSquares-Info.plist";
+				PRODUCT_NAME = LatinSquares;
 				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
 				WRAPPER_EXTENSION = app;
 			};
@@ -491,9 +496,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DesignMC/DesignMC-Prefix.pch";
-				INFOPLIST_FILE = "DesignMC/DesignMC-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
+				INFOPLIST_FILE = "LatinSquares/LatinSquares-Info.plist";
+				PRODUCT_NAME = LatinSquares;
 				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -503,7 +508,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1FC95EA1359927500F5606D /* Build configuration list for PBXProject "DesignMC" */ = {
+		A1FC95EA1359927500F5606D /* Build configuration list for PBXProject "LatinSquares" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1FC96141359927600F5606D /* Debug */,
@@ -512,7 +517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1FC96161359927600F5606D /* Build configuration list for PBXNativeTarget "DesignMC" */ = {
+		A1FC96161359927600F5606D /* Build configuration list for PBXNativeTarget "LatinSquares" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1FC96171359927600F5606D /* Debug */,

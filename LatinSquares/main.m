@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, @"DesignMCAppDelegate");
+    int retVal = UIApplicationMain(argc, argv, nil, @"LatinSquaresAppDelegate");
     [pool release];
     return retVal;
 }

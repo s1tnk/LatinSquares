@@ -88,6 +88,7 @@
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    self.navigationItem.prompt = @"This content requires an internet connection.";
     NSLog(@"Error.");
 }
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {

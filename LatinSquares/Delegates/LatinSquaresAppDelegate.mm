@@ -1,14 +1,14 @@
 //
-//  DesignMCAppDelegate.m
+//  LatinSquaresAppDelegate.m
 //  DesignMC
 //
 //  Created by Andy Drizen on 16/04/2011.
 //  Copyright 2011 Andy Drizen. All rights reserved.
 //
 
-#import "DesignMCAppDelegate.h"
+#import "LatinSquaresAppDelegate.h"
 
-@implementation DesignMCAppDelegate
+@implementation LatinSquaresAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

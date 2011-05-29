@@ -1,5 +1,5 @@
 //
-//  DesignMCAppDelegate.h
+//  LatinSquaresAppDelegate.h
 //  DesignMC
 //
 //  Created by Andy Drizen on 16/04/2011.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LSTableView.h"
 
-@interface DesignMCAppDelegate : NSObject <UIApplicationDelegate> {
+@interface LatinSquaresAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     UINavigationController *navigationController;
 }
