@@ -249,7 +249,7 @@
 			"cell_textLabel_fontSize":16,
 			"icon": "unsolved",
 			"title": "Unsolved Problems", 
-			"section_titles":["Problems on the web","Problems"]
+			"section_titles":["Problems on the web","Problems"],
 			"items": [
 						[
 							{

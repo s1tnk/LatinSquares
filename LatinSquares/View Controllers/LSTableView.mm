@@ -30,8 +30,9 @@
     
     if(!tableFeatures)
     {
+        [[ContentManager sharedInstance] setShouldNotify:YES];
         UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateInformation:)];
-        self.navigationItem.rightBarButtonItem = refresh;
+        //self.navigationItem.rightBarButtonItem = refresh;
         [refresh release];
 
         // Custom initialization
@@ -40,6 +41,7 @@
     }
     else
     {
+        [[ContentManager sharedInstance] setShouldNotify:NO];
         self.title = [tableFeatures valueForKey:@"title"];
     }
     // Uncomment the following line to preserve selection between presentations.

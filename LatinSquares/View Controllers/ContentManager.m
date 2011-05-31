@@ -10,7 +10,7 @@
 
 
 @implementation ContentManager
-@synthesize content;
+@synthesize content,ShouldNotify;
 
 + (ContentManager *) sharedInstance
 {
@@ -31,7 +31,7 @@
     {
         contentPlistPath = [[NSString stringWithFormat:@"%@/content.plist", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]] retain];
         content = [[NSMutableDictionary alloc] initWithContentsOfFile:contentPlistPath];
-
+        ShouldNotify = YES;
     }
     return self;
 }
@@ -66,7 +66,8 @@
         
     }
     [self downloadExternalFiles];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
+    if(ShouldNotify)
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
 }
 - (void)downloadExternalFiles
 {
@@ -97,8 +98,8 @@
     [[[content valueForKey:@"external_files"] valueForKey:item] setValue:[request responseData] forKey:@"file"];
     [content writeToFile:contentPlistPath atomically:YES];
 
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"fileDownloaded" object:nil];
+    if(ShouldNotify)
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"fileDownloaded" object:nil];
 }
 - (void)requestFailed:(ASIHTTPRequest *)request
 {

@@ -57,8 +57,8 @@
 		A1A4CD5513634E4600A72098 /* LSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSTableView.h; sourceTree = "<group>"; };
 		A1A4CD5613634E4600A72098 /* LSTableView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LSTableView.mm; sourceTree = "<group>"; };
 		A1C48A941359DA2B008A923D /* DesignMC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DesignMC.cpp; sourceTree = "<group>"; };
-		A1C48A951359DA2B008A923D /* DesignMC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; path = DesignMC.hpp; sourceTree = "<group>"; };
-		A1C48A961359DA2B008A923D /* DesignMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DesignMCWrapper.h; sourceTree = "<group>"; };
+		A1C48A951359DA2B008A923D /* DesignMC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DesignMC.hpp; sourceTree = "<group>"; };
+		A1C48A961359DA2B008A923D /* DesignMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignMCWrapper.h; sourceTree = "<group>"; };
 		A1C48A971359DA2B008A923D /* DesignMCWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DesignMCWrapper.mm; sourceTree = "<group>"; };
 		A1C48A991359DA2B008A923D /* CUIHorizontalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIHorizontalPickerView.h; sourceTree = "<group>"; };
 		A1C48A9A1359DA2B008A923D /* CUIHorizontalPickerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CUIHorizontalPickerView.mm; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
+				PROVISIONING_PROFILE = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,7 +467,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
+				PROVISIONING_PROFILE = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -478,13 +478,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
 				INFOPLIST_FILE = "LatinSquares/LatinSquares-Info.plist";
 				PRODUCT_NAME = LatinSquares;
-				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
+				PROVISIONING_PROFILE = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -494,12 +496,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
 				INFOPLIST_FILE = "LatinSquares/LatinSquares-Info.plist";
 				PRODUCT_NAME = LatinSquares;
-				PROVISIONING_PROFILE = "D3C721F8-1BA1-4CC6-AE34-0B3EBDA2B9E4";
+				PROVISIONING_PROFILE = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
