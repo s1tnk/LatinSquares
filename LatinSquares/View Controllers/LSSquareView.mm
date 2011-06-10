@@ -78,7 +78,15 @@
     }
 
     propertiesView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height-2*44, self.view.frame.size.width, 44+200)] retain];
-    [propertiesView setBackgroundColor:[UIColor colorWithRed:109.0/255 green:132.0/255 blue:162.0/255 alpha:1.0]];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [propertiesView setBackgroundColor:[UIColor colorWithRed:160.0/255 green:165.0/255 blue:178.0/255 alpha:1.0]];
+    }
+    else
+    {
+        [propertiesView setBackgroundColor:[UIColor colorWithRed:109.0/255 green:132.0/255 blue:162.0/255 alpha:1.0]];
+    }
+    
     [self.view addSubview:propertiesView];
     
     UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44)] retain];

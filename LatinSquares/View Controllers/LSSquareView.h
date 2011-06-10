@@ -42,7 +42,7 @@
 -(void)hideLoading;
 -(void)move1;
 -(void)move20;
--(void)enumerate;
+//-(void)enumerate;
 -(void)findTransversal;
 -(void)touchedCell:(id)sender;
 -(void)subtleMessage:(NSString *)str withDelay:(float)d;
