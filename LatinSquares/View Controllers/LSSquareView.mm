@@ -205,14 +205,18 @@
 {
     if(!b)
     {
+        NSLog(@"Disabling interface");
         sv.userInteractionEnabled = NO;
         //toolsBtn.enabled = NO;
+        toolboxButton.enabled = NO;
         [hpv setUserInteractionEnabled:NO];
     } 
     else
     {
+        NSLog(@"Enabling interface");
         sv.userInteractionEnabled = YES;
         //toolsBtn.enabled = YES;
+        toolboxButton.enabled = YES;
         [hpv setUserInteractionEnabled:YES];
     }
     
@@ -304,6 +308,7 @@
     [self performSelector:@selector(toggleToolbox:) withObject:nil];
     if(!AreBlocksPredefined)
     {
+        [self interfaceEnabled:NO];
         [self showLoading];
         [self performSelectorInBackground:@selector(move20) withObject:nil];
     }
@@ -366,7 +371,7 @@
             break;
  }
 }
- */
+ 
 -(void)enumerate
 {
     NSString *iso;
@@ -422,6 +427,7 @@
     [alert show];
     [alert release];
 }
+ */
 -(void)findTransversal
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
@@ -479,13 +485,14 @@
         [self drawSquare];
     [pool release];
 }
+/*
 - (void)move20Squares:(id)sender
 {
     [self interfaceEnabled:NO];
     [self showLoading];
     //HasUserMovedFromCyclicSquare = YES;
     [self performSelectorInBackground:@selector(move20) withObject:nil];
-}
+}*/
 -(void)move20
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
