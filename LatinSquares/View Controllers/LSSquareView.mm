@@ -14,7 +14,7 @@
 
 -(id)init
 {
-    self.title = @"Random Squares";
+    self.title = @"Random Square";
     s = [[DesignMCWrapper alloc] init];
     blockSet bs;
     s.square = new Square(7, bs);
@@ -31,11 +31,12 @@
 }
 - (void)loadView
 {
+    cellColour = [[UIColor colorWithRed:192/255.0 green:36/255.0 blue:13/255.0 alpha:1.0] retain];
     CGRect frame = [UIScreen mainScreen].applicationFrame;
 	self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 20.0, frame.size.width, frame.size.height )];
     [self.view setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
 	[self.view release];
-        
+    isToolboxDisplayed = NO;
     int toolbarOffset = 0;
     if(!AreBlocksPredefined || [[sqProperties valueForKey:@"allowPertubation"] boolValue])
     {
@@ -47,13 +48,13 @@
         [self.view addSubview:hpv];
         [hpv release];
     }
-    sv = [[UIScrollView alloc] initWithFrame:CGRectMake(0, toolbarOffset*44.0, self.view.frame.size.width, self.view.frame.size.height-44-44*toolbarOffset)];
+    sv = [[UIScrollView alloc] initWithFrame:CGRectMake(0, toolbarOffset*44.0, self.view.frame.size.width, self.view.frame.size.height-44-44*2*toolbarOffset)];
     sv.delegate = self;
     [self.view addSubview:sv];
         
-    toolsBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showTools:)];
-    self.navigationItem.rightBarButtonItem = toolsBtn;
-    [toolsBtn release];
+    //toolsBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showTools:)];
+    //self.navigationItem.rightBarButtonItem = toolsBtn;
+    //[toolsBtn release];
     
     loading = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-30, self.view.frame.size.height/2-60, 60, 60)] retain];
     [loading setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
@@ -75,19 +76,143 @@
         [self showLoading];
         [self drawSquare];
     }
+
+    propertiesView = [[[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.frame.size.height-2*44, self.view.frame.size.width, 44+200)] retain];
+    [propertiesView setBackgroundColor:[UIColor colorWithRed:109.0/255 green:132.0/255 blue:162.0/255 alpha:1.0]];
+    [self.view addSubview:propertiesView];
+    
+    UIToolbar *toolbar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44)] retain];
+    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    toolboxButton = [[[UIBarButtonItem alloc] initWithTitle:@"Open Toolbox" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleToolbox:)] retain];
+    [toolbar setItems:[NSArray arrayWithObjects:flex,toolboxButton,flex,nil] animated:YES];
+    [toolboxButton release];
+    [propertiesView addSubview:toolbar];
+    
+    if(!AreBlocksPredefined)
+    {
+        red_slider = [[UISlider alloc] initWithFrame:CGRectMake(75.0, 65, self.view.frame.size.width-95, 40)];
+        red_slider.minimumValue = 0.0;
+        red_slider.maximumValue = 0.9;
+        red_slider.value = 0.9;
+        [red_slider setMinimumTrackImage:[UIImage imageNamed:@"red_min_track.png"] forState:UIControlStateNormal];
+        [propertiesView addSubview:red_slider];
+
+        green_slider = [[UISlider alloc] initWithFrame:CGRectMake(75.0, 105, self.view.frame.size.width-95, 40)];
+        green_slider.minimumValue = 0.0;
+        green_slider.maximumValue = 0.9;
+        green_slider.value = 0.0;
+        [green_slider setMinimumTrackImage:[UIImage imageNamed:@"green_min_track.png"] forState:UIControlStateNormal];
+        [propertiesView addSubview:green_slider];
+        
+        blue_slider = [[UISlider alloc] initWithFrame:CGRectMake(75.0, 145, self.view.frame.size.width-95, 40)];
+        blue_slider.minimumValue = 0.0;
+        blue_slider.maximumValue = 0.9;
+        blue_slider.value = 0.0;
+        [propertiesView addSubview:blue_slider];
+
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 48, self.view.frame.size.width-10, 16)];
+        [label setBackgroundColor:[UIColor clearColor]];
+        [label setTextColor:[UIColor whiteColor]];
+        [label setText:@"Cell highlight colour"];
+        [label setFont:[UIFont boldSystemFontOfSize:14]];
+        [propertiesView addSubview:label];
+        
+        UILabel *red_label = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 60, self.view.frame.size.width-50, 40)];
+        [red_label setBackgroundColor:[UIColor clearColor]];
+        [red_label setTextColor:[UIColor whiteColor]];
+        [red_label setText:@"Red"];
+        [red_label setFont:[UIFont boldSystemFontOfSize:12]];
+        [propertiesView addSubview:red_label];
+        
+        UILabel *green_label = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 100, self.view.frame.size.width-50, 40)];
+        [green_label setBackgroundColor:[UIColor clearColor]];
+        [green_label setTextColor:[UIColor whiteColor]];
+        [green_label setText:@"Green"];
+        [green_label setFont:[UIFont boldSystemFontOfSize:12]];
+        [propertiesView addSubview:green_label];
+        
+        UILabel *blue_label = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 140, self.view.frame.size.width-50, 40)];
+        [blue_label setBackgroundColor:[UIColor clearColor]];
+        [blue_label setTextColor:[UIColor whiteColor]];
+        [blue_label setText:@"Blue"];
+        [blue_label setFont:[UIFont boldSystemFontOfSize:12]];
+        [propertiesView addSubview:blue_label];
+    }
+
+    UIButton *toolButton1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [toolButton1 addTarget:self action:@selector(pressedToolButton1:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if(AreBlocksPredefined)
+    {
+        [toolButton1 setTitle:@"Tell me about this square" forState:UIControlStateNormal];
+        [toolButton1 setFrame:CGRectMake(10.0, 50, self.view.frame.size.width-20.0, 44)];
+    }
+    else
+    {
+        [toolButton1 setTitle:@"New Square" forState:UIControlStateNormal];
+        [toolButton1 setFrame:CGRectMake(10.0, 190, self.view.frame.size.width/2-20.0, 44)];
+        
+        UIButton *toolButton2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [toolButton2 addTarget:self action:@selector(pressedToolButton2:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [toolButton2 setTitle:@"Show Transversal" forState:UIControlStateNormal];
+        [toolButton2 setFrame:CGRectMake(self.view.frame.size.width/2+10.0, 190, self.view.frame.size.width/2-20.0, 44)];
+        [propertiesView addSubview:toolButton2];
+    }
+    
+    [propertiesView addSubview:toolButton1];
+    
+
+}
+-(void)toggleToolbox:(id)sender
+{
+    NSLog(@"Toggling toolbox");
+    if(isToolboxDisplayed)
+    {
+        NSLog(@"Hiding toolbox");
+        [toolboxButton setTitle:@"Open Toolbox"];
+        isToolboxDisplayed = NO; 
+        [UIView beginAnimations:@"displayToolbox" context:nil];
+		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDelegate:self];
+            [propertiesView setFrame:CGRectMake(0.0, self.view.frame.size.height-2*44+44, self.view.frame.size.width, 44+200)];
+		[UIView commitAnimations];
+    }
+    else
+    {
+        float propertiesViewY;
+        if(AreBlocksPredefined)
+        {
+            propertiesViewY = self.view.frame.size.height-100;
+        }
+        else
+        {
+            propertiesViewY = self.view.frame.size.height-propertiesView.frame.size.height;
+        }
+        NSLog(@"Showing toolbox");
+        [toolboxButton setTitle:@"Close Toolbox"];
+        isToolboxDisplayed = YES;
+        [UIView beginAnimations:@"hideToolbox" context:nil];
+		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDelegate:self];
+            [propertiesView setFrame:CGRectMake(0.0, propertiesViewY, self.view.frame.size.width, 44+200)];
+		[UIView commitAnimations];
+    }
 }
 -(void)interfaceEnabled:(BOOL)b
 {
     if(!b)
     {
         sv.userInteractionEnabled = NO;
-        toolsBtn.enabled = NO;
+        //toolsBtn.enabled = NO;
         [hpv setUserInteractionEnabled:NO];
     } 
     else
     {
         sv.userInteractionEnabled = YES;
-        toolsBtn.enabled = YES;
+        //toolsBtn.enabled = YES;
         [hpv setUserInteractionEnabled:YES];
     }
     
@@ -155,6 +280,7 @@
                                 }
      ];
 }
+/*
 -(void)showTools:(id)sender
 {
     UIActionSheet *actionSheet;
@@ -172,6 +298,36 @@
     [actionSheet showInView:self.view];
     [actionSheet release];
 }
+ */
+-(void)pressedToolButton1:(id)sender
+{
+    [self performSelector:@selector(toggleToolbox:) withObject:nil];
+    if(!AreBlocksPredefined)
+    {
+        [self showLoading];
+        [self performSelectorInBackground:@selector(move20) withObject:nil];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"More Infomation" message:[sqProperties valueForKey:@"description"] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+}
+-(void)pressedToolButton2:(id)sender
+{
+    [self performSelector:@selector(toggleToolbox:) withObject:nil];
+    if(s.square->getVType() == 2)
+    {
+        [self subtleMessage:@"No Latin square on 2 points has a transversal." withDelay:2.5];
+    }
+    else
+    {
+        [self showLoading];
+        [self performSelectorInBackground:@selector(findTransversal) withObject:nil];
+    }
+}
+/*
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
@@ -208,8 +364,9 @@
             break;
         default:
             break;
-    }
+ }
 }
+ */
 -(void)enumerate
 {
     NSString *iso;
@@ -409,7 +566,22 @@
 {
     return ls;
 }
-
+-(NSDictionary*)getColour
+{
+    UIColor *back = [UIColor colorWithRed:red_slider.value green:green_slider.value blue:blue_slider.value alpha:1.0];
+    UIColor *fore;
+    float c = red_slider.value + green_slider.value + blue_slider.value;
+    if (c >= 2) 
+    {
+        fore = [UIColor blackColor];
+    }
+    else
+    {
+        fore = [UIColor whiteColor];
+    }
+    NSDictionary *colours = [[[NSDictionary alloc] initWithObjectsAndKeys:back,@"back",fore,@"fore", nil] autorelease];
+    return colours;
+}
 -(void)touchedCell:(id)sender
 {
     UIButton *b = (UIButton *)[sv viewWithTag:[sender tag]];
@@ -423,8 +595,8 @@
     else
     {
         [touchedArr addObject:[NSNumber numberWithInt:[sender tag]]];
-        tmpLabel.backgroundColor = [UIColor colorWithRed:192/255.0 green:36/255.0 blue:13/255.0 alpha:1.0];
-        tmpLabel.textColor = [UIColor whiteColor];
+        tmpLabel.backgroundColor = [[self getColour] valueForKey:@"back"];
+        tmpLabel.textColor = [[self getColour] valueForKey:@"fore"];
     }
 }
 
@@ -467,6 +639,11 @@
     [loading release];
     [touchedArr release];
     [ls release];
+    [red_slider release];
+    [green_slider release];
+    [blue_slider release];
+    
+    //[toolbar release];
 }
 
 - (void)didReceiveMemoryWarning

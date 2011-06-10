@@ -20,7 +20,7 @@
     CGRect frame = [UIScreen mainScreen].applicationFrame;
 	self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 20.0, frame.size.width, frame.size.height )];
 	[self.view release];
-    
+    self.navigationController.toolbarHidden = YES;
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height-44)];
     [self.view addSubview:webView];
     [webView setDelegate:self];

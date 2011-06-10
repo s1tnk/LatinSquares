@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A119552913A0AA2E00EE4673 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A119552813A0AA2E00EE4673 /* libz.1.2.3.dylib */; };
 		A1203B36135A01B7006B5736 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B35135A01B7006B5736 /* Default.png */; };
 		A1203B38135A0220006B5736 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B37135A021F006B5736 /* Default@2x.png */; };
+		A15E32A3139FFCC1001E9AE0 /* red_min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = A15E32A2139FFCC1001E9AE0 /* red_min_track.png */; };
 		A1A4CD5713634E4600A72098 /* LSTableView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1A4CD5613634E4600A72098 /* LSTableView.mm */; };
+		A1A961AC13A002F00051089C /* green_min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A961AB13A002F00051089C /* green_min_track.png */; };
 		A1C48AAC1359DA2B008A923D /* DesignMC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A941359DA2B008A923D /* DesignMC.cpp */; };
 		A1C48AAD1359DA2B008A923D /* DesignMCWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A971359DA2B008A923D /* DesignMCWrapper.mm */; };
 		A1C48AAE1359DA2B008A923D /* CUIHorizontalPickerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A9A1359DA2B008A923D /* CUIHorizontalPickerView.mm */; };
@@ -34,7 +37,6 @@
 		A1F0426E138FFD1B00EF08C8 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F04263138FFD1B00EF08C8 /* ASINetworkQueue.m */; };
 		A1F0426F138FFD1B00EF08C8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F04266138FFD1B00EF08C8 /* Reachability.m */; };
 		A1F04275138FFE8700EF08C8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F04270138FFE8600EF08C8 /* CFNetwork.framework */; };
-		A1F04276138FFE8700EF08C8 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F04272138FFE8700EF08C8 /* libz.1.2.3.dylib */; };
 		A1F04277138FFE8700EF08C8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F04273138FFE8700EF08C8 /* MobileCoreServices.framework */; };
 		A1F04278138FFE8700EF08C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F04274138FFE8700EF08C8 /* SystemConfiguration.framework */; };
 		A1F0427A1390039A00EF08C8 /* content.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1F042791390039A00EF08C8 /* content.plist */; };
@@ -52,10 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A119552813A0AA2E00EE4673 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A1203B35135A01B7006B5736 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A1203B37135A021F006B5736 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A15E32A2139FFCC1001E9AE0 /* red_min_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_min_track.png; sourceTree = "<group>"; };
 		A1A4CD5513634E4600A72098 /* LSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSTableView.h; sourceTree = "<group>"; };
 		A1A4CD5613634E4600A72098 /* LSTableView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LSTableView.mm; sourceTree = "<group>"; };
+		A1A961AB13A002F00051089C /* green_min_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_min_track.png; sourceTree = "<group>"; };
 		A1C48A941359DA2B008A923D /* DesignMC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DesignMC.cpp; sourceTree = "<group>"; };
 		A1C48A951359DA2B008A923D /* DesignMC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DesignMC.hpp; sourceTree = "<group>"; };
 		A1C48A961359DA2B008A923D /* DesignMCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignMCWrapper.h; sourceTree = "<group>"; };
@@ -101,7 +106,6 @@
 		A1F04266138FFD1B00EF08C8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A1F04270138FFE8600EF08C8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A1F04271138FFE8600EF08C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A1F04272138FFE8700EF08C8 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A1F04273138FFE8700EF08C8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1F04274138FFE8700EF08C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A1F042791390039A00EF08C8 /* content.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = content.plist; sourceTree = "<group>"; };
@@ -133,9 +137,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A119552913A0AA2E00EE4673 /* libz.1.2.3.dylib in Frameworks */,
 				A1F04275138FFE8700EF08C8 /* CFNetwork.framework in Frameworks */,
 				A1FC95F91359927600F5606D /* CoreGraphics.framework in Frameworks */,
-				A1F04276138FFE8700EF08C8 /* libz.1.2.3.dylib in Frameworks */,
 				A1F04277138FFE8700EF08C8 /* MobileCoreServices.framework in Frameworks */,
 				A1F04278138FFE8700EF08C8 /* SystemConfiguration.framework in Frameworks */,
 				A1FC95F51359927600F5606D /* UIKit.framework in Frameworks */,
@@ -180,6 +184,8 @@
 		A1C48AA01359DA2B008A923D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1A961AB13A002F00051089C /* green_min_track.png */,
+				A15E32A2139FFCC1001E9AE0 /* red_min_track.png */,
 				A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */,
 				A1203B37135A021F006B5736 /* Default@2x.png */,
 				A1203B35135A01B7006B5736 /* Default.png */,
@@ -283,9 +289,9 @@
 		A1FC95F31359927600F5606D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A119552813A0AA2E00EE4673 /* libz.1.2.3.dylib */,
 				A1F04270138FFE8600EF08C8 /* CFNetwork.framework */,
 				A1F04271138FFE8600EF08C8 /* CoreGraphics.framework */,
-				A1F04272138FFE8700EF08C8 /* libz.1.2.3.dylib */,
 				A1F04273138FFE8700EF08C8 /* MobileCoreServices.framework */,
 				A1F04274138FFE8700EF08C8 /* SystemConfiguration.framework */,
 				A1FC95F41359927600F5606D /* UIKit.framework */,
@@ -348,6 +354,7 @@
 		A1FC95E71359927500F5606D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Andy Drizen";
 			};
 			buildConfigurationList = A1FC95EA1359927500F5606D /* Build configuration list for PBXProject "LatinSquares" */;
@@ -383,6 +390,8 @@
 				A1203B38135A0220006B5736 /* Default@2x.png in Resources */,
 				A1D3BCC6135A23E2006721AD /* Default-Portrait~ipad.png in Resources */,
 				A1F0427A1390039A00EF08C8 /* content.plist in Resources */,
+				A15E32A3139FFCC1001E9AE0 /* red_min_track.png in Resources */,
+				A1A961AC13A002F00051089C /* green_min_track.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +454,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
@@ -463,6 +473,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
@@ -477,7 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jetpack Studios LLP";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -485,7 +496,7 @@
 				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
 				INFOPLIST_FILE = "LatinSquares/LatinSquares-Info.plist";
 				PRODUCT_NAME = LatinSquares;
-				PROVISIONING_PROFILE = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
+				PROVISIONING_PROFILE = "638F6727-0F99-4AFA-9A5E-77E1E5320692";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
 				WRAPPER_EXTENSION = app;
 			};
@@ -495,14 +506,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jetpack Studios LLP";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
 				INFOPLIST_FILE = "LatinSquares/LatinSquares-Info.plist";
 				PRODUCT_NAME = LatinSquares;
-				PROVISIONING_PROFILE = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
+				PROVISIONING_PROFILE = "638F6727-0F99-4AFA-9A5E-77E1E5320692";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

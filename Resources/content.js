@@ -7,7 +7,7 @@
 	"items": [[
 		{                                                
 			"cell_types":"UITableViewCellStyleSubtitle",    
-			"cell_height":90,           
+			"cell_height":60,           
   			"cell_textLabel_numberOfLines":3,
 			"cell_textLabel_fontSize":20,
 			"icon": "theory",
@@ -18,21 +18,29 @@
 					{
 						"content_type": "LSWebsiteView",
 						"title":"What is a Latin Square?",       
-						"subtitle":"A definition and common examples",
-						"html":"<style>.nocolor{ background-color:#ffffff; } .nocolor td{ background-color:#ffffff; } table { background-color:#333333; } td { background-color:#ffffff; }  th { color:#ffffff; }  </style> <p>Suppose you have n copies of n different objects that you want to arrange in a grid. If you place them in such a way so that each row and each column of the grid contains exactly one of each object, then your grid is what we call a Latin square of order n. The objects are usually the numbers in the set { 1 , 2 , ..., n }, but they can be anything. For example, the following is a Latin square of order 4</p><table cellspacing=\"1\" cellpadding=\"10\"> <tbody> <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> </tr> <tr> <td>2</td> <td>1</td> <td>4</td> <td>3</td> </tr> <tr> <td>3</td> <td>4</td> <td>1</td> <td>2</td> </tr> <tr> <td>4</td> <td>3</td> <td>2</td> <td>1</td> </tr> </tbody> </table> </p>"
+						"subtitle":"",
+						"html":"<style>.latinSquare td { font-size:18px; text-align:center; width:25px; border:1px solid #cccccc; height:25px; padding:5px; }.selected { color:#ffffff; background-color:#ff0000; font-weight:900; } </style> <p>Suppose you have n copies of n different objects that you want to arrange in a grid. If you place them in such a way so that each row and each column of the grid contains exactly one of each object, then your grid is what we call a Latin square of order n. The objects are usually the numbers in the set { 1 , 2 , ..., n }, but they can be anything. For example, the following is a Latin square of order 4</p><table class=\"latinSquare\" cellspacing=\"1\" cellpadding=\"10\"> <tbody> <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> </tr> <tr> <td>2</td> <td>1</td> <td>4</td> <td>3</td> </tr> <tr> <td>3</td> <td>4</td> <td>1</td> <td>2</td> </tr> <tr> <td>4</td> <td>3</td> <td>2</td> <td>1</td> </tr> </tbody> </table> </p>"
 					},
 					{
 						"content_type": "LSWebsiteView",
 						"title":"When are two squares different?",        
-						"subtitle":"Isotopism VS Isomorphism.",
-						"html":"<style>.nocolor{ background-color:#ffffff; } .nocolor td{ background-color:#ffffff; } table { background-color:#333333; } td { background-color:#ffffff; }  th { color:#ffffff; }  </style> <p>Given a Latin square, there are 6 special moves that you can perform, which I have split up in to two categories.</p> <h4>Isotopy moves</h4> <ol> <li>Swap the position of two rows.</li> <li>Swap the position of two columns.</li> <li>Swap every occurrence of some symbol with every occurrence of another symbol.</li> </ol> <p>Using these moves, we are able to alter the any Latin square so that the numbers in the first row and first column appear in ascending numerical order; this is know as <strong>reduced form</strong>.</p> <h4>Conjugacy moves</h4> <p>For the following 3 moves, it might be best to think about Latin squares in a slightly different way. Suppose we have a little ordered triple or the form (row, column, symbol) for every cell in the grid, for example, in this Latin square,</p><br/><table cellspacing=\"1\" cellpadding=\"10\"> <tbody> <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> </tr> <tr> <td>2</td> <td>1</td> <td>4</td> <td>3</td> </tr> <tr> <td>3</td> <td>4</td> <td>1</td> <td>2</td> </tr> <tr> <td>4</td> <td>3</td> <td>2</td> <td>1</td> </tr> </tbody> </table></p> we would have the following set of triples:</p> <p>{<br /> (1,1,1),(1,2,2),(1,3,3),(1,4,4),<br /> (2,1,2),(2,2,1),(2,3,4),(2,4,3),<br /> (3,1,3),(3,2,4),(3,3,1),(3,4,2),<br /> (4,1,4),(4,2,3),(4,3,2),(4,4,1)<br /> }</p> <p>Now what would happen if instead of each triple being of the form (row, column, symbol) they were of the form (column, symbol, row)? The above set of triples would still describe a Latin square! As soon as you notice that reordering the triple doesn&#8217;t change how often each symbol appears in each row/column or how many symbols appear in any cell, you&#8217;ll realise that this type of swapping can&#8217;t cause a violation of the definition of a Latin square. The next three moves formalise this process.</p> <ol start=\"4\"> <li>Swap the meaning of rows and columns (i.e. flip the square along the main diagonal to get the <a href=\"http://en.wikipedia.org/wiki/Transpose\">transpose</a> of the square).</li> <li>Swap the meaning of rows and symbols.</li> <li>Swap the meaning of columns and symbols.</li> </ol> <p>Let A and B be a couple of Latin squares of the same order. If I can convert A into B by using any of the isotopy moves, then we say A is <strong>isotopic</strong> to B (and vice versa). If I can convert A in to B using any of the conjugacy moves, then, you guessed it, A is <strong>conjugate</strong> to B (and vice versa). Finally if A is isotopic to a conjugate of B, then we say that A is <strong>main class equivalent</strong> (or, for brevity, <strong>equivalent</strong>) to B. If two Latin squares are not main class equivalent, we call them <strong>different</strong>.</p> "
+						"subtitle":"",
+						"html":"<style>.latinSquare td { font-size:18px; text-align:center; width:25px; border:1px solid #cccccc; height:25px; padding:5px; }.selected { color:#ffffff; background-color:#ff0000; font-weight:900; } </style> <p>Given a Latin square, there are 6 special moves that you can perform, which I have split up in to two categories.</p> <h4>Isotopy moves</h4> <ol> <li>Swap the position of two rows.</li> <li>Swap the position of two columns.</li> <li>Swap every occurrence of some symbol with every occurrence of another symbol.</li> </ol> <p>Using these moves, we are able to alter the any Latin square so that the numbers in the first row and first column appear in ascending numerical order; this is know as <strong>reduced form</strong>.</p> <h4>Conjugacy moves</h4> <p>For the following 3 moves, it might be best to think about Latin squares in a slightly different way. Suppose we have a little ordered triple or the form (row, column, symbol) for every cell in the grid, for example, in this Latin square,</p><br/><table class=\"latinSquare\" cellspacing=\"1\" cellpadding=\"10\"> <tbody> <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> </tr> <tr> <td>2</td> <td>1</td> <td>4</td> <td>3</td> </tr> <tr> <td>3</td> <td>4</td> <td>1</td> <td>2</td> </tr> <tr> <td>4</td> <td>3</td> <td>2</td> <td>1</td> </tr> </tbody> </table></p> we would have the following set of triples:</p> <p>{<br /> (1,1,1),(1,2,2),(1,3,3),(1,4,4),<br /> (2,1,2),(2,2,1),(2,3,4),(2,4,3),<br /> (3,1,3),(3,2,4),(3,3,1),(3,4,2),<br /> (4,1,4),(4,2,3),(4,3,2),(4,4,1)<br /> }</p> <p>Now what would happen if instead of each triple being of the form (row, column, symbol) they were of the form (column, symbol, row)? The above set of triples would still describe a Latin square! As soon as you notice that reordering the triple doesn&#8217;t change how often each symbol appears in each row/column or how many symbols appear in any cell, you&#8217;ll realise that this type of swapping can&#8217;t cause a violation of the definition of a Latin square. The next three moves formalise this process.</p> <ol start=\"4\"> <li>Swap the meaning of rows and columns (i.e. flip the square along the main diagonal to get the <a href=\"http://en.wikipedia.org/wiki/Transpose\">transpose</a> of the square).</li> <li>Swap the meaning of rows and symbols.</li> <li>Swap the meaning of columns and symbols.</li> </ol> <p>Let A and B be a couple of Latin squares of the same order. If I can convert A into B by using any of the isotopy moves, then we say A is <strong>isotopic</strong> to B (and vice versa). If I can convert A in to B using any of the conjugacy moves, then, you guessed it, A is <strong>conjugate</strong> to B (and vice versa). Finally if A is isotopic to a conjugate of B, then we say that A is <strong>main class equivalent</strong> (or, for brevity, <strong>equivalent</strong>) to B. If two Latin squares are not main class equivalent, we call them <strong>different</strong>.</p> "
 					},
 					{
 						"content_type": "LSWebsiteView",
 						"title":"How many squares of order n are there?",  
-						"subtitle":"Is there an combinatorial explosion?",
-						"html":"<style>.nocolor{ background-color:#ffffff; } .nocolor td{ background-color:#ffffff; } table { background-color:#333333; } td { background-color:#ffffff; }  th { color:#ffffff; }  </style> <p>If you haven't read the &quot;When are two squares different&quot; article, you might like to do that now. In the following table, two squares are described as &quot;different&quot; if they are not main-class equivalent.</p><table cellspacing=\"1\" cellpadding=\"10\"> <thead> <tr> <th>n</th> <th>Number of different Latin squares of order n</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>1</td> </tr> <tr> <td>2</td> <td>1</td> </tr> <tr> <td>3</td> <td>1</td> </tr> <tr> <td>4</td> <td>2</td> </tr> <tr> <td>5</td> <td>2</td> </tr> <tr> <td>6</td> <td>12</td> </tr> <tr> <td>7</td> <td>147</td> </tr> <tr> <td>8</td> <td>283657</td> </tr> <tr> <td>9</td> <td>19270853541</td> </tr> <tr> <td>10</td> <td>34817397894749940</td> </tr> <tr> <td>11</td> <td>2036029552582883134196099</td> </tr> </tbody> </table> <p>What you see here is very common in my area of mathematics, and it is affectionately known as the <a href=\"http://en.wikipedia.org/wiki/Combinatorial_explosion\">combinatorial explosion</a> &#8211; the point at which the number of objects we&#8217;re looking at grows very rapidly.</p> <p>The dream would be to have a formula DifferentLS(n) that computes the number of Latin squares for any value of n, but so far nobody has managed to create such a formula. Having said that, we do know something about the maximum and minimum values DifferentLS(n) could take, for any value of n. That is, we have upper and lower bounds for DifferentLS(n). </p> <p>We can very quickly create crude lower bounds, for example a lower bound is 1, because there does always exist a Latin square. To prove this, create an empty (n x n) grid and place the numbers 1, 2, &#8230;, n in the top row. In the second row, cycle the numbers round by 1 position, and place the numbers 2, 3, &#8230;, n, 1. In the third row, cycle the numbers around again, and place the numbers 3, 4, &#8230;, n, 1, 2. Carry on in this way until you reach the end of the square. You have now created the <strong>Cyclic Latin square</strong>! For an upper bound, we know that each row contains a permutatation of the symbols in the set {1, 2, &#8230;, n} and there are n! = n * (n-1) * (n-2) * &#8230; * 2 * 1 different permutations to choose from. As there are also n rows, we have an upper bound of (n!)^n. </p> <p>However, I&#8217;ll think you&#8217;ll agree that those bounds are not very good. How can we do better? Can we make the problem easier? Rather than calculate the number of different squares, we could just calculate the total number of squares, that is, all Latin squares that are not identical, but might be isotopic or a conjugates, denoted L(n). For this question, we have the bounds of van Lint and Wilson:</p> <p><img alt=\"Bounds for LS(n)\" src=\"http://upload.wikimedia.org/math/a/c/1/ac14365a19c81dc26d2b2f2750c29ade.png\" title=\"Bounds for LS(n)\" class=\"alignnone\" width=\"229\" height=\"53\" /></p> <p>Any improvements on these bounds would not only be a significant event in the world of Latin squares, but it would also have knock-on effects to those applications that use Latin squares.</p> "
-					}
+						"subtitle":"",
+						"html":"<style>th{font-size:18px; text-align:center; width:25px; border:1px solid #cccccc; height:25px; padding:5px; } .latinSquare { border-spacing:1px; background-color:#ffffff; } .latinSquare td { font-size:18px; text-align:center; width:25px; border:1px solid #cccccc; height:25px; padding:5px; }</style> <p>If you haven't read the &quot;When are two squares different&quot; article, you might like to do that now. In the following table, two squares are described as &quot;different&quot; if they are not main-class equivalent.</p><table class=\"latinSquare\" cellspacing=\"1\" cellpadding=\"10\"> <thead> <tr> <th>n</th> <th>Number of different Latin squares of order n</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>1</td> </tr> <tr> <td>2</td> <td>1</td> </tr> <tr> <td>3</td> <td>1</td> </tr> <tr> <td>4</td> <td>2</td> </tr> <tr> <td>5</td> <td>2</td> </tr> <tr> <td>6</td> <td>12</td> </tr> <tr> <td>7</td> <td>147</td> </tr> <tr> <td>8</td> <td>283657</td> </tr> <tr> <td>9</td> <td>19270853541</td> </tr> <tr> <td>10</td> <td>34817397894749940</td> </tr> <tr> <td>11</td> <td>2036029552582883134196099</td> </tr> </tbody> </table> <p>What you see here is very common in my area of mathematics, and it is affectionately known as the <a href=\"http://en.wikipedia.org/wiki/Combinatorial_explosion\">combinatorial explosion</a> &#8211; the point at which the number of objects we&#8217;re looking at grows very rapidly.</p> <p>The dream would be to have a formula DifferentLS(n) that computes the number of Latin squares for any value of n, but so far nobody has managed to create such a formula. Having said that, we do know something about the maximum and minimum values DifferentLS(n) could take, for any value of n. That is, we have upper and lower bounds for DifferentLS(n). </p> <p>We can very quickly create crude lower bounds, for example a lower bound is 1, because there does always exist a Latin square. To prove this, create an empty (n x n) grid and place the numbers 1, 2, &#8230;, n in the top row. In the second row, cycle the numbers round by 1 position, and place the numbers 2, 3, &#8230;, n, 1. In the third row, cycle the numbers around again, and place the numbers 3, 4, &#8230;, n, 1, 2. Carry on in this way until you reach the end of the square. You have now created the <strong>Cyclic Latin square</strong>! For an upper bound, we know that each row contains a permutatation of the symbols in the set {1, 2, &#8230;, n} and there are n! = n * (n-1) * (n-2) * &#8230; * 2 * 1 different permutations to choose from. As there are also n rows, we have an upper bound of (n!)^n. </p> <p>However, I&#8217;ll think you&#8217;ll agree that those bounds are not very good. How can we do better? Can we make the problem easier? Rather than calculate the number of different squares, we could just calculate the total number of squares, that is, all Latin squares that are not identical, but might be isotopic or a conjugates, denoted L(n). For this question, we have the bounds of van Lint and Wilson:</p> <p><img alt=\"Bounds for LS(n)\" src=\"http://upload.wikimedia.org/math/a/c/1/ac14365a19c81dc26d2b2f2750c29ade.png\" title=\"Bounds for LS(n)\" class=\"alignnone\" width=\"229\" height=\"53\" /></p> <p>Any improvements on these bounds would not only be a significant event in the world of Latin squares, but it would also have knock-on effects to those applications that use Latin squares.</p> "
+					},         
+					{
+						"content_type": "LSWebsiteView",
+						"title":"Transversals",  
+						"subtitle":"",
+						"html":"<style>.latinSquare { border-spacing:1px; background-color:#ffffff; } .latinSquare td { font-size:18px; text-align:center; width:25px; border:1px solid #cccccc; height:25px; padding:5px; }.selected { color:#ffffff; background-color:#ff0000; font-weight:900; } </style><p>Given a Latin square of order n, we define a <span style=\"color: #000000;\"><strong>diagonal</strong></span> as n cells, no two of which lie in the same row or column. If you had n non-attacking rooks placed on the grid, you&#8217;d have a diagonal. The <strong>main diagonal</strong> is defined to be the cells (row i, column i) for 1 &#8804; i &#8804; n.</p> <p>A <span style=\"color: #000000;\"><strong>transversal</strong></span> is a diagonal in which all of the symbols are distinct. For example, the red squares below are a transversal of this Latin square of order 9.</p> <table class=\"latinSquare\" style=\"margin: 0 auto;\"> <tbody> <tr> <td>7</td> <td>6</td> <td>3</td> <td>4</td> <td>2</td> <td>1</td> <td class=\"selected\">8</td> <td>9</td> <td>5</td> </tr> <tr> <td>3</td> <td>5</td> <td>6</td> <td class=\"selected\">2</td> <td>4</td> <td>7</td> <td>1</td> <td>8</td> <td>9</td> </tr> <tr> <td>2</td> <td>4</td> <td>8</td> <td>7</td> <td>6</td> <td>9</td> <td>5</td> <td class=\"selected\">3</td> <td>1</td> </tr> <tr> <td>4</td> <td>8</td> <td>2</td> <td>1</td> <td>3</td> <td>5</td> <td>9</td> <td>6</td> <td class=\"selected\">7</td> </tr> <tr> <td>8</td> <td>3</td> <td>7</td> <td>9</td> <td>5</td> <td class=\"selected\">6</td> <td>2</td> <td>1</td> <td>4</td> </tr> <tr> <td>1</td> <td>2</td> <td>5</td> <td>3</td> <td class=\"selected\">9</td> <td>8</td> <td>4</td> <td>7</td> <td>6</td> </tr> <tr> <td class=\"selected\">5</td> <td>9</td> <td>1</td> <td>6</td> <td>7</td> <td>2</td> <td>3</td> <td>4</td> <td>8</td> </tr> <tr> <td>6</td> <td class=\"selected\">1</td> <td>9</td> <td>5</td> <td>8</td> <td>4</td> <td>7</td> <td>2</td> <td>3</td> </tr> <tr> <td>9</td> <td>7</td> <td class=\"selected\">4</td> <td>8</td> <td>1</td> <td>3</td> <td>6</td> <td>5</td> <td>2</td> </tr> </tbody> </table>"
+					}         
+					
+					
 				]
 			]
 		},
@@ -66,6 +74,13 @@
 								"title":"A Course in Combinatorics",
 								"subtitle":"J. H. van Lint, R. M. Wilson",
 								"html":"<p><a href='http://www.amazon.co.uk/Course-Combinatorics-J-van-Lint/dp/0521006015/ref=sr_1_1?ie=UTF8&qid=1306598424&sr=8-1'>View book on Amazon.co.uk</a></p><h3>Summary</h3><p>This is the second edition of a popular book on combinatorics, a subject dealing with ways of arranging and distributing objects, and which involves ideas from geometry, algebra and analysis. The breadth of the theory is matched by that of its applications, which include topics as diverse as codes, circuit design and algorithm complexity. It has thus become essential for workers in many scientific fields to have some familiarity with the subject. The authors have tried to be as comprehensive as possible, dealing in a unified manner with, for example, graph theory, extremal problems, designs, colorings and codes. The depth and breadth of the coverage make the book a unique guide to the whole of the subject. The book is ideal for courses on combinatorical mathematics at the advanced undergraduate or beginning graduate level. Working mathematicians and scientists will also find it a valuable introduction and reference.</p>"
+							},
+							{
+								"content_type": "LSWebsiteView",
+								"icon": "rab_book",
+								"title":"Design of Comparative Experiments",
+								"subtitle":"R. A. Bailey",
+								"html":"<p><a href='http://www.cambridge.org/gb/knowledge/isbn/item1173822/?site_locale=en_GB'>View book on CUP</a><br/><a href='http://www.maths.qmul.ac.uk/~rab/DOEbook/'>View draft contents</a></p><h3>Summary</h3><p>This book should be on the shelf of every practising statistician who designs experiments. Good design considers units and treatments first, and then allocates treatments to units. It does not choose from a menu of named designs. This approach requires a notation for units that does not depend on the treatments applied. Most structure on the set of observational units, or on the set of treatments, can be defined by factors. This book develops a coherent framework for thinking about factors and their relationships, including the use of Hasse diagrams. These are used to elucidate structure, calculate degrees of freedom and allocate treatment subspaces to appropriate strata. Based on a one-term course the author has taught since 1989, the book is ideal for advanced undergraduate and beginning graduate courses. Examples, exercises and discussion questions are drawn from a wide range of real applications: from drug development, to agriculture, to manufacturing.</p>"
 							}
 						]
 			]
@@ -285,12 +300,6 @@
 								"content_type": "LSWebsiteView",    
 								"subtitle":"",
 								"html":"<p>What is the probability that, in a randomly generated Latin square, the main diagonal is a transversal?</p>"
-							},
-							{
-								"title":"Decompose in to a few partial transversals",
-								"content_type": "LSWebsiteView",    
-								"subtitle":"",
-								"html":"<p>As a function of n, what is the fewest number of near transversals that a Latin square can be decomposed in to?</p>"
 							}     
 						]
 			]
@@ -316,20 +325,69 @@
 					"content_type": "LSSquareView",
 					"title":"Cyclic Squares",
 					"subtitle":"A Latin square exists for every order",
-					"description":"A Latin square exists for every order, for example the Cayley table of the Cyclic group is always a Latin square, shown here.",
+					"description":"A Latin square exists for every order, for example the Cayley table of the Cyclic group is always a Latin square, shown here. To construct it, write down the numbers from 1 up to n (in order) in the top row. Then, for each subsubsequent cell, write down the number diagonally (above and to the right) of it.",
 					"n":6,
 					"blocks":[
-								  [ 1, 7, 13 ], [ 1, 8, 14 ], [ 1, 9, 15 ], [ 1, 10, 16 ], 
-							      [ 1, 11, 17 ], [ 1, 12, 18 ], [ 2, 7, 14 ], [ 2, 8, 15 ], [ 2, 9, 16 ], 
-							      [ 2, 10, 17 ], [ 2, 11, 18 ], [ 2, 12, 13 ], [ 3, 7, 15 ], 
-							      [ 3, 8, 16 ], [ 3, 9, 17 ], [ 3, 10, 18 ], [ 3, 11, 13 ], 
-							      [ 3, 12, 14 ], [ 4, 7, 16 ], [ 4, 8, 17 ], [ 4, 9, 18 ], [ 4, 10, 13 ], 
-							      [ 4, 11, 14 ], [ 4, 12, 15 ], [ 5, 7, 17 ], [ 5, 8, 18 ], [ 5, 9, 13 ], 
-							      [ 5, 10, 14 ], [ 5, 11, 15 ], [ 5, 12, 16 ], [ 6, 7, 18 ], 
-							      [ 6, 8, 13 ], [ 6, 9, 14 ], [ 6, 10, 15 ], [ 6, 11, 16 ], [ 6, 12, 17 ]
+								  [ 0, 6, 12 ], [ 0, 7, 13 ], [ 0, 8, 14 ], [ 0, 9, 15 ], 
+							      [ 0, 10, 16 ], [ 0, 11, 17 ], [ 1, 6, 13 ], [ 1, 7, 14 ], [ 1, 8, 15 ], 
+							      [ 1, 9, 16 ], [ 1, 10, 17 ], [ 1, 11, 12 ], [ 2, 6, 14 ], 
+							      [ 2, 7, 15 ], [ 2, 8, 16 ], [ 2, 9, 17 ], [ 2, 10, 12 ], 
+							      [ 2, 11, 13 ], [ 3, 6, 15 ], [ 3, 7, 16 ], [ 3, 8, 17 ], [ 3, 9, 12 ], 
+							      [ 3, 10, 13 ], [ 3, 11, 14 ], [ 4, 6, 16 ], [ 4, 7, 17 ], [ 4, 8, 12 ], 
+							      [ 4, 9, 13 ], [ 4, 10, 14 ], [ 4, 11, 15 ], [ 5, 6, 17 ], 
+							      [ 5, 7, 12 ], [ 5, 8, 13 ], [ 5, 9, 14 ], [ 5, 10, 15 ], [ 5, 11, 16 ]   
 							],
-					"highlight_blocks":[],
-					"highlight_blocks_colours":[],
+					"highlight_blocks":[
+											[0,6,12],[1,11,12],[2,10,12],[3,9,12],[4,8,12],[5,7,12],
+											[0,7,13],[1,6,13],[2,11,13],[3,10,13],[4,9,13],[5,8,13],
+											[0,8,14],[1,7,14],[2,6,14],[3,11,14],[4,10,14],[5,9,14],
+											[0,9,15],[1,8,15],[2,7,15],[3,6,15],[4,11,15],[5,10,15],
+											[0,10,16],[1,9,16],[2,8,16],[3,7,16],[4,6,16],[5,11,16],
+											[0,11,17],[1,10,17],[2,9,17],[3,8,17],[4,7,17],[5,6,17] 
+									   ],
+					"highlight_blocks_colours":[
+												{"red":1.0,"blue":0,"green":0.88,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.88,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.88,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.88,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.88,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.88,"alpha":1.0},
+
+												{"red":1.0,"blue":0,"green":0.2,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.2,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.2,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.2,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.2,"alpha":1.0},
+												{"red":1.0,"blue":0,"green":0.2,"alpha":1.0},
+
+												{"red":0.78,"blue":0,"green":0.4,"alpha":1.0},
+												{"red":0.78,"blue":0,"green":0.4,"alpha":1.0},
+												{"red":0.78,"blue":0,"green":0.4,"alpha":1.0},
+												{"red":0.78,"blue":0,"green":0.4,"alpha":1.0},
+												{"red":0.78,"blue":0,"green":0.4,"alpha":1.0},
+												{"red":0.78,"blue":0,"green":0.4,"alpha":1.0},
+
+												{"red":0.3,"blue":1.0,"green":0.5,"alpha":1.0},
+												{"red":0.3,"blue":1.0,"green":0.5,"alpha":1.0},
+												{"red":0.3,"blue":1.0,"green":0.5,"alpha":1.0},
+												{"red":0.3,"blue":1.0,"green":0.5,"alpha":1.0},
+												{"red":0.3,"blue":1.0,"green":0.5,"alpha":1.0},
+												{"red":0.3,"blue":1.0,"green":0.5,"alpha":1.0},
+
+												{"red":0.62,"blue":0.95,"green":0.35,"alpha":1.0},
+												{"red":0.62,"blue":0.95,"green":0.35,"alpha":1.0},
+												{"red":0.62,"blue":0.95,"green":0.35,"alpha":1.0},
+												{"red":0.62,"blue":0.95,"green":0.35,"alpha":1.0},
+												{"red":0.62,"blue":0.95,"green":0.35,"alpha":1.0},
+												{"red":0.62,"blue":0.95,"green":0.35,"alpha":1.0},
+
+												{"red":0.95,"blue":0.5,"green":0.33,"alpha":1.0},
+												{"red":0.95,"blue":0.5,"green":0.33,"alpha":1.0},
+												{"red":0.95,"blue":0.5,"green":0.33,"alpha":1.0},
+												{"red":0.95,"blue":0.5,"green":0.33,"alpha":1.0},
+												{"red":0.95,"blue":0.5,"green":0.33,"alpha":1.0},
+												{"red":0.95,"blue":0.5,"green":0.33,"alpha":1.0}
+												],
 					"allowPertubation":false,
 					"allowRecolouring":false
 				}],
@@ -337,7 +395,7 @@
 					"content_type": "LSSquareView",
 					"title":"Finding an orthogonal mate",
 					"subtitle":"A complete set of transversals indicates an orthogonal Latin square.",
-					"description":"A complete set of transversals indicates an orthogonal Latin square",
+					"description":"A complete set of transversals indicates an orthogonal Latin square. Note how there is only one cell that is both yellow and containing the symbol 1. This is true for any colour and symbol, and therefore the Latin square defined by the colours is an orthogonal mate to the square square defined by the symbols.",
 					"n":3,
 					"blocks":[
 								[0,3,6],[0,4,7],[0,5,8],[1,3,7],[1,4,8],[1,5,6],
@@ -424,6 +482,11 @@
 		"van_lint_wilson":{
 			"url":"http://server.andydrizen.co.uk/latinsquares/images/van_lint_wilson.png",
 			"url_retina":"http://server.andydrizen.co.uk/latinsquares/images/van_lint_wilson@2x.png",
+			"type":"image"
+		} ,		
+		"rab_book":{
+			"url":"http://server.andydrizen.co.uk/latinsquares/images/rab_book.png",
+			"url_retina":"http://server.andydrizen.co.uk/latinsquares/images/rab_book@2x.png",
 			"type":"image"
 		} 
 	}

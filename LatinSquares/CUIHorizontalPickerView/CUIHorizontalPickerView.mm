@@ -34,9 +34,9 @@
 -(void)reloadComponent
 {
 	NSInteger numberOfColumns = [dataSource numberOfColumsInHorizontalPickerView:self];
-	NSString *label = [delegate horizontalPickerView:self titleForColumn:0];
+	//NSString *label = [delegate horizontalPickerView:self titleForColumn:0];
 	
-	NSLog(@"number of columns = %d, label = %@", numberOfColumns, label);
+	//NSLog(@"number of columns = %d, label = %@", numberOfColumns, label);
 	
 	self.backgroundColor = [UIColor clearColor];
 	

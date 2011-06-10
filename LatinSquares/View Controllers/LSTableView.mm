@@ -27,7 +27,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedInformation:) name:@"contentUpdateFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedInformation:) name:@"fileDownloaded" object:nil];
-    
+    self.navigationController.toolbarHidden = YES;
     if(!tableFeatures)
     {
         [[ContentManager sharedInstance] setShouldNotify:YES];

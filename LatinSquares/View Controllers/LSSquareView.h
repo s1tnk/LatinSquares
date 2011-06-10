@@ -21,10 +21,20 @@
     CUIHorizontalPickerView *hpv;
     NSDictionary *sqProperties;
     NSMutableDictionary *plistSquares;
-    UIBarButtonItem *toolsBtn, *aboutBtn;
+    UIBarButtonItem *aboutBtn;
+    //UIBarButtonItem *toolsBtn;
     //BOOL HasUserMovedFromCyclicSquare;
     BOOL AreBlocksPredefined;
+    UIColor *cellColour;
+    //UIToolbar *toolbar;
+    UISlider *red_slider;
+    UISlider *blue_slider;
+    UISlider *green_slider;
+    UIView *propertiesView;
+    BOOL isToolboxDisplayed;
+    UIBarButtonItem *toolboxButton;
 }
+-(NSDictionary*)getColour;
 -(id)initWithSquare:(DesignMCWrapper *)squareWrapper andProperties:(NSDictionary *)properties;
 -(void)showCyclicSquare;
 -(void)drawSquare;
