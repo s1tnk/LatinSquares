@@ -368,6 +368,10 @@
         while(!s.square->IsTransversal(b))
         {
             k++;
+            if(k > 5000 && k % 1000 == 0)
+            {
+                [overlay subtleMessage:[NSString stringWithFormat:@"Progress\n\n %i/%i",k,limit] withDelay:1.0];
+            }
             if(k>limit)
             {
                 [self interfaceEnabled:YES];
