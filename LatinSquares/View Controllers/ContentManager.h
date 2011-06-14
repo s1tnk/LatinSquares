@@ -15,14 +15,14 @@
 @interface ContentManager : NSObject <ASIHTTPRequestDelegate> {
     NSMutableDictionary *content;
     NSString *contentPlistPath;
-    BOOL ShouldNotify;
+    //BOOL ShouldNotify;
     id <ContentManagerDelegate> delegate;
 }
 + (ContentManager *) sharedInstance;
 - (void) updateContentWithForce:(BOOL)shouldForce;
 - (void)downloadExternalFiles;
 @property(nonatomic, retain) NSMutableDictionary *content;
-@property(nonatomic, assign) BOOL ShouldNotify;
+//@property(nonatomic, assign) BOOL ShouldNotify;
 @property(nonatomic, retain) id <ContentManagerDelegate> delegate;
 @end
 

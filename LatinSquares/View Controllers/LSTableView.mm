@@ -32,21 +32,23 @@
     isFirstLoad = YES;
     if(!tableFeatures)
     {
-        [[ContentManager sharedInstance] setShouldNotify:YES];
+        //isFirstScreen = YES;
+        //[[ContentManager sharedInstance] setShouldNotify:YES];
         UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateInformation:)];
         self.navigationItem.rightBarButtonItem = refresh;
         [refresh release];
 
         // Custom initialization
         NSLog(@"Initializing...");
+        [[ContentManager sharedInstance] setDelegate:self];
         [[ContentManager sharedInstance] updateContentWithForce:NO];
     }
     else
     {
-        [[ContentManager sharedInstance] setShouldNotify:NO];
+        //isFirstScreen = NO;
+        //[[ContentManager sharedInstance] setShouldNotify:NO];
         self.title = [tableFeatures valueForKey:@"title"];
     }
-    [[ContentManager sharedInstance] setDelegate:self];
 }
 
 -(void)updateInformation:(id)sender
@@ -96,11 +98,16 @@
 {
     [super viewWillAppear:animated];
 }
-
+/*
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
+    if(isFirstScreen)
+    {
+        NSLog(@"view did appear (isFirstScreen = YES;)");
+        [[ContentManager sharedInstance] setShouldNotify:YES];
+    }
+}*/
 
 - (void)viewWillDisappear:(BOOL)animated
 {

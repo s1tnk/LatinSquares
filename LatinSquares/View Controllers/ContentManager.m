@@ -10,7 +10,8 @@
 
 
 @implementation ContentManager
-@synthesize content,ShouldNotify,delegate;
+@synthesize content,delegate;
+//@synthesize ShouldNotify;
 
 + (ContentManager *) sharedInstance
 {
@@ -31,7 +32,7 @@
     {
         contentPlistPath = [[NSString stringWithFormat:@"%@/content.plist", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]] retain];
         content = [[NSMutableDictionary alloc] initWithContentsOfFile:contentPlistPath];
-        ShouldNotify = YES;
+        //ShouldNotify = YES;
     }
     return self;
 }
@@ -79,7 +80,7 @@
         [self downloadExternalFiles];
     }
     
-    if(ShouldNotify)
+    //if(ShouldNotify)
         [delegate contentUpdated:areThereUpdates withMessage:updates_str];
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
 }
@@ -112,7 +113,7 @@
     [[[content valueForKey:@"external_files"] valueForKey:item] setValue:[request responseData] forKey:@"file"];
     [content writeToFile:contentPlistPath atomically:YES];
 
-    if(ShouldNotify)
+    //if(ShouldNotify)
         [delegate contentUpdated:YES withMessage:@"external_files"];
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"fileDownloaded" object:nil];
 }

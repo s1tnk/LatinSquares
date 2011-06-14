@@ -17,6 +17,7 @@
     Overlay *overlay;
     NSDictionary *external_files;
     BOOL isFirstLoad;
+    //BOOL isFirstScreen;
 }
 @property(nonatomic, retain) NSDictionary *tableFeatures;
 @property(nonatomic, retain) NSDictionary *external_files;
