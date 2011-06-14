@@ -76,9 +76,9 @@
             [content autorelease];
         content = [[[request responseString] JSONValue] retain];
         [content writeToFile:contentPlistPath atomically:YES];
-        
+        [self downloadExternalFiles];
     }
-    [self downloadExternalFiles];
+    
     if(ShouldNotify)
         [delegate contentUpdated:areThereUpdates withMessage:updates_str];
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];

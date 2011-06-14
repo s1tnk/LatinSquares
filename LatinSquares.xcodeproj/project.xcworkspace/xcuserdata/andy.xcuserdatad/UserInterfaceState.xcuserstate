@@ -4603,9 +4603,9 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>329747297.013735</real>
-		<string>{13533, 949}</string>
-		<string>{14313, 0}</string>
+		<real>329748024.65466601</real>
+		<string>{13533, 913}</string>
+		<string>{14122, 0}</string>
 		<string>-findTransversal</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
@@ -21068,19 +21068,19 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>212</integer>
+					<integer>413</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>213</integer>
+					<integer>414</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>214</integer>
+					<integer>415</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>215</integer>
+					<integer>416</integer>
 				</dict>
 			</array>
 			<key>NS.objects</key>
@@ -21103,9 +21103,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>329740912.15489799</real>
-		<string>{1350, 955}</string>
-		<string>{1935, 0}</string>
+		<real>329747972.52741498</real>
+		<string>{8133, 1220}</string>
+		<string>{8770, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -25153,9 +25153,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>329747297.01297402</real>
-		<string>{13533, 949}</string>
-		<string>{14313, 0}</string>
+		<real>329748024.65341699</real>
+		<string>{13533, 913}</string>
+		<string>{14122, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -26694,19 +26694,19 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>212</integer>
+					<integer>413</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>213</integer>
+					<integer>414</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>214</integer>
+					<integer>415</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>215</integer>
+					<integer>416</integer>
 				</dict>
 			</array>
 			<key>NS.objects</key>
@@ -26729,9 +26729,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>329742016.02393103</real>
-		<string>{1284, 912}</string>
-		<string>{1901, 0}</string>
+		<real>329747965.10576999</real>
+		<string>{1971, 1424}</string>
+		<string>{2218, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -34315,7 +34315,7 @@
 				<integer>2338</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>329747292.01288998</real>
+			<real>329748022.62032998</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -34326,7 +34326,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 13:28</string>
+		<string>Today at 13:40</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -35117,11 +35117,11 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2413</integer>
+					<integer>2414</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2415</integer>
+					<integer>2416</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -35176,6 +35176,42 @@
 				<integer>2411</integer>
 			</dict>
 		</dict>
+		<string>file://localhost/Users/Andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/View%20Controllers/LSTableView.mm</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>223</integer>
+			</dict>
+			<key>NS.base</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>0</integer>
+			</dict>
+			<key>NS.relative</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>2413</integer>
+			</dict>
+		</dict>
+		<string>file://localhost/Users/Andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/View%20Controllers/ContentManager.m</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>223</integer>
+			</dict>
+			<key>NS.base</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>0</integer>
+			</dict>
+			<key>NS.relative</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>2415</integer>
+			</dict>
+		</dict>
 		<string>file://localhost/Users/andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/Overlay.m</string>
 		<dict>
 			<key>$class</key>
@@ -35208,46 +35244,10 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2414</integer>
-			</dict>
-		</dict>
-		<string>file://localhost/Users/Andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/LatinSquares-Info.plist</string>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>223</integer>
-			</dict>
-			<key>NS.base</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>0</integer>
-			</dict>
-			<key>NS.relative</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>2416</integer>
-			</dict>
-		</dict>
-		<string>file://localhost/Users/Andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/View%20Controllers/ContentManager.m</string>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>223</integer>
-			</dict>
-			<key>NS.base</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>0</integer>
-			</dict>
-			<key>NS.relative</key>
-			<dict>
-				<key>CF$UID</key>
 				<integer>2418</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/View%20Controllers/LSTableView.mm</string>
+		<string>file://localhost/Users/Andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/LatinSquares-Info.plist</string>
 		<dict>
 			<key>$class</key>
 			<dict>

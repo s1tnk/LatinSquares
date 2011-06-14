@@ -350,15 +350,11 @@
         [self drawSquare];
         [overlay showLoading];
         int limit = 50000;
-        NSString *msg = @"Timed out.";
+        NSString *msg = @"\n\nTimed out\n\n";
         if(s.square->getVType() < 7)
         {
             limit = 2000;
-            msg = @"Timed out. Square probably has no transversal.";
-        }
-        if(s.square->getVType() > 12)
-        {
-            [overlay subtleMessage:@"This is a big square so I probably won't be able to find a transversal; I'll try anyway." withDelay:4.0];
+            msg = @"Timed out\n\nSquare probably has no transversal.";
         }
         
         
@@ -368,9 +364,9 @@
         while(!s.square->IsTransversal(b))
         {
             k++;
-            if(k > 5000 && k % 1000 == 0)
+            if(k > 5000 && k % 2000 == 0)
             {
-                [overlay subtleMessage:[NSString stringWithFormat:@"Progress\n\n %i/%i",k,limit] withDelay:1.0];
+                [overlay subtleMessage:[NSString stringWithFormat:@"Progress\n\n\n %i/%i",k,limit] withDelay:1.0];
             }
             if(k>limit)
             {
