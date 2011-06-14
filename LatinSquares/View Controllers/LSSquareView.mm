@@ -639,7 +639,7 @@
     hpv.delegate = self;
     hpv.dataSource = self;
     [hpv reloadComponent];
-    [self.view addSubview:hpv];
+    [self.view insertSubview:hpv belowSubview:propertiesView];
     [hpv release];
     
     float w,h;
