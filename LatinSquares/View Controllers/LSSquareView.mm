@@ -345,22 +345,38 @@
 -(void)findTransversal
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+        
         // clear any coloured squares first.
         [self drawSquare];
+        [overlay showLoading];
+        int limit = 50000;
+        NSString *msg = @"Timed out.";
+        if(s.square->getVType() < 7)
+        {
+            limit = 2000;
+            msg = @"Timed out. Square probably has no transversal.";
+        }
+        if(s.square->getVType() > 12)
+        {
+            limit = 150000;
+            [overlay subtleMessage:@"This is a big square... I probably can't find a transversal..." withDelay:2.0];
+        }
+        
+        
         [self interfaceEnabled:NO];
         blockSet b = s.square->generateDiagonal(); 
         int k = 0;
         while(!s.square->IsTransversal(b))
         {
             k++;
-            if(k>50000)
+            if(k>limit)
             {
                 [self interfaceEnabled:YES];
-                [overlay subtleMessage:@"Timed out" withDelay:1.0];
+                [overlay hideLoading];
+                [overlay subtleMessage:msg withDelay:1.0];
                 return;
             }
             b = s.square->diagonalMove(b, 1);
-               
         }
         for(int i=0; i<b.size(); i++)
         {

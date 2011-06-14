@@ -29,17 +29,20 @@
         float d = [[info valueForKey:@"duration"] floatValue];
         NSString *str = [info valueForKey:@"str"];
         UIView *v = [delegate viewForOverlayDisplay];
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(v.frame.size.width/2-80, v.frame.size.height/2-70, 160, 80)];
-        [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, view.frame.size.width-10, view.frame.size.height-10)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 10.0, v.frame.size.width-10, v.frame.size.height-10)];
         [label setTextAlignment:UITextAlignmentCenter];
         [label setText:str];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextColor:[UIColor whiteColor]];
-        [label setAdjustsFontSizeToFitWidth:YES];
+        [label setAdjustsFontSizeToFitWidth:NO];
         [label setNumberOfLines:0];
         [label setLineBreakMode:UILineBreakModeWordWrap];
+        [label sizeToFit];
+    
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(v.frame.size.width/2-label.frame.size.width/2-10, v.frame.size.height/2-label.frame.size.height/2-10, 20+label.frame.size.width, 20+label.frame.size.height)];
+        [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
         [view addSubview:label];
+    
         [label release];
         [view setAlpha:0];
         view.layer.cornerRadius = 10.0;
