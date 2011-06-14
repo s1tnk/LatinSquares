@@ -358,7 +358,6 @@
         }
         if(s.square->getVType() > 12)
         {
-            limit = 150000;
             [overlay subtleMessage:@"This is a big square so I probably won't be able to find a transversal; I'll try anyway." withDelay:2.0];
         }
         
