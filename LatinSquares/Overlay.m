@@ -34,8 +34,9 @@
         [label setText:str];
         [label setBackgroundColor:[UIColor clearColor]];
         [label setTextColor:[UIColor whiteColor]];
-        [label setAdjustsFontSizeToFitWidth:NO];
         [label setNumberOfLines:0];
+        [label setAdjustsFontSizeToFitWidth:YES];
+        [label setFont:[UIFont boldSystemFontOfSize:18.0]];
         [label setLineBreakMode:UILineBreakModeWordWrap];
         [label sizeToFit];
     
