@@ -27,6 +27,8 @@
 @property (nonatomic, retain) id <CUIHorizontalPickerViewDelegate> delegate;
 @property (nonatomic, retain) id <CUIHorizontalPickerViewDataSource> dataSource;
 -(void)reloadComponent;
+-(void)removeLabelsFromScrollview;
+-(void)scrollToPositionItem:(int)item animated:(BOOL)anim;
 @end
 
 @protocol CUIHorizontalPickerViewDelegate

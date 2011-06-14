@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10DAF7B13A6A0C6006E5762 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A10DAF7A13A6A0C6006E5762 /* Default-Landscape~ipad.png */; };
 		A119552913A0AA2E00EE4673 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A119552813A0AA2E00EE4673 /* libz.1.2.3.dylib */; };
 		A1203B36135A01B7006B5736 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B35135A01B7006B5736 /* Default.png */; };
 		A1203B38135A0220006B5736 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B37135A021F006B5736 /* Default@2x.png */; };
+		A12FC0D113A7490000AA5A31 /* Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A12FC0D013A7490000AA5A31 /* Overlay.m */; };
 		A15E32A3139FFCC1001E9AE0 /* red_min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = A15E32A2139FFCC1001E9AE0 /* red_min_track.png */; };
 		A1A4CD5713634E4600A72098 /* LSTableView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1A4CD5613634E4600A72098 /* LSTableView.mm */; };
 		A1A961AC13A002F00051089C /* green_min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A961AB13A002F00051089C /* green_min_track.png */; };
@@ -54,9 +56,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10DAF7A13A6A0C6006E5762 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		A119552813A0AA2E00EE4673 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		A1203B35135A01B7006B5736 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A1203B37135A021F006B5736 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A12FC0CF13A7490000AA5A31 /* Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Overlay.h; path = ../../../../../../andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/Overlay.h; sourceTree = "<group>"; };
+		A12FC0D013A7490000AA5A31 /* Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Overlay.m; path = ../../../../../../andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/Overlay.m; sourceTree = "<group>"; };
 		A15E32A2139FFCC1001E9AE0 /* red_min_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_min_track.png; sourceTree = "<group>"; };
 		A1A4CD5513634E4600A72098 /* LSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSTableView.h; sourceTree = "<group>"; };
 		A1A4CD5613634E4600A72098 /* LSTableView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LSTableView.mm; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 				A1A961AB13A002F00051089C /* green_min_track.png */,
 				A15E32A2139FFCC1001E9AE0 /* red_min_track.png */,
 				A1D3BCC5135A23E2006721AD /* Default-Portrait~ipad.png */,
+				A10DAF7A13A6A0C6006E5762 /* Default-Landscape~ipad.png */,
 				A1203B37135A021F006B5736 /* Default@2x.png */,
 				A1203B35135A01B7006B5736 /* Default.png */,
 				A1C48AA11359DA2B008A923D /* Icon-72.png */,
@@ -308,6 +314,8 @@
 				A1F0427C139003DD00EF08C8 /* ContentManager.m */,
 				A1F042B01390085900EF08C8 /* External */,
 				A1C48A931359DA2B008A923D /* CPP */,
+				A12FC0CF13A7490000AA5A31 /* Overlay.h */,
+				A12FC0D013A7490000AA5A31 /* Overlay.m */,
 				A1C48A981359DA2B008A923D /* CUIHorizontalPickerView */,
 				A1C48A9D1359DA2B008A923D /* Delegates */,
 				A1C48AA71359DA2B008A923D /* View Controllers */,
@@ -392,6 +400,7 @@
 				A1F0427A1390039A00EF08C8 /* content.plist in Resources */,
 				A15E32A3139FFCC1001E9AE0 /* red_min_track.png in Resources */,
 				A1A961AC13A002F00051089C /* green_min_track.png in Resources */,
+				A10DAF7B13A6A0C6006E5762 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +435,7 @@
 				A1F042C51390094400EF08C8 /* SBJsonBase.m in Sources */,
 				A1F042C61390094400EF08C8 /* SBJsonParser.m in Sources */,
 				A1F042C71390094400EF08C8 /* SBJsonWriter.m in Sources */,
+				A12FC0D113A7490000AA5A31 /* Overlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +499,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jetpack Studios LLP";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jetpack Studios LLP";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -498,7 +508,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = LatinSquares;
 				PROVISIONING_PROFILE = "638F6727-0F99-4AFA-9A5E-77E1E5320692";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "638F6727-0F99-4AFA-9A5E-77E1E5320692";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -508,7 +518,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jetpack Studios LLP";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Drizen (3DDCM7289R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jetpack Studios LLP";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LatinSquares/LatinSquares-Prefix.pch";
@@ -516,7 +526,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = LatinSquares;
 				PROVISIONING_PROFILE = "638F6727-0F99-4AFA-9A5E-77E1E5320692";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7560C982-4E8D-4B0F-93FD-4BCC8A469134";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "638F6727-0F99-4AFA-9A5E-77E1E5320692";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

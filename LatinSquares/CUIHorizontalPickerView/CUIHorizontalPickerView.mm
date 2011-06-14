@@ -40,17 +40,18 @@
 	
 	self.backgroundColor = [UIColor clearColor];
 	
-	
+	[scrollView setFrame:CGRectMake((self.frame.size.width-self.frame.size.width*scrollViewItemPadding)/2, 0.0, self.frame.size.width*scrollViewItemPadding, self.frame.size.height)];
 	[scrollView setContentSize:CGSizeMake(numberOfColumns*(scrollView.frame.size.width), self.frame.size.height)];
 	[scrollView setBackgroundColor:[UIColor clearColor]];
 	[scrollView setPagingEnabled:YES];
 	[scrollView setClipsToBounds:NO];
 	[scrollView setShowsHorizontalScrollIndicator:NO];
 	[scrollView setDelegate:self];
-	
-	for (int i = 0; i < numberOfColumns; i++) 
+    [self removeLabelsFromScrollview];
+    for (int i = 0; i < numberOfColumns; i++) 
 	{
 		UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(scrollView.frame.size.width*i, 0.0, scrollView.frame.size.width, scrollView.frame.size.height)];
+        [label1 setTag:99];
 		[label1 setBackgroundColor:[UIColor clearColor]];
 		[label1 setTextAlignment:UITextAlignmentCenter];
 		[label1 setFont:[UIFont systemFontOfSize:18.0]];
@@ -64,9 +65,23 @@
 	[subView setScrollView:scrollView];
 	[subView addSubview:scrollView];
 	[self addSubview:subView];
-    [scrollView setContentOffset:CGPointMake(scrollView.frame.size.width*5, 0.0) animated:NO];
+    //[scrollView setContentOffset:CGPointMake(scrollView.frame.size.width*5, 0.0) animated:NO];
 }
-
+-(void)scrollToPositionItem:(int)item animated:(BOOL)anim
+{
+    [scrollView scrollRectToVisible:CGRectMake(item*scrollView.frame.size.width, 0.0, scrollView.frame.size.width, scrollView.frame.size.height) animated:anim];
+}
+-(void)removeLabelsFromScrollview
+{
+    for (int i = 0; i < [[scrollView subviews] count]; i++) 
+	{
+        if([[[scrollView subviews] objectAtIndex:i] tag] == 99)
+        {
+            [[[scrollView subviews] objectAtIndex:i] removeFromSuperview];
+            i--;
+        }
+    }
+}
 - (void) scrollViewWillBeginDecelerating: (UIScrollView *) sv
 {
 

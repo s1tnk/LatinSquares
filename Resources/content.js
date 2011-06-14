@@ -1,4 +1,6 @@
-{	"last_updated": "201105280937",  
+{	"version": "v1.1",  
+	"version_history":{"v1.1":"App: rotation support, update support. Data: Changed last_updated to version. Leaving last_updated in for now for legacy users."},
+	"last_updated": "obsolete",  
 	"cell_textLabel_numberOfLines":1,
 	"cell_textLabel_fontSize":20,   
 	"cell_height":60,

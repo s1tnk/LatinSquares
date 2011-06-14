@@ -25,42 +25,64 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedInformation:) name:@"contentUpdateFinished" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedInformation:) name:@"fileDownloaded" object:nil];
     self.navigationController.toolbarHidden = YES;
+    
+    overlay = [[[Overlay alloc] init] retain];
+    overlay.delegate = self;
+    isFirstLoad = YES;
     if(!tableFeatures)
     {
         [[ContentManager sharedInstance] setShouldNotify:YES];
         UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateInformation:)];
-        //self.navigationItem.rightBarButtonItem = refresh;
+        self.navigationItem.rightBarButtonItem = refresh;
         [refresh release];
 
         // Custom initialization
         NSLog(@"Initializing...");
-        [[ContentManager sharedInstance] updateContentWithForce:YES];
+        [[ContentManager sharedInstance] updateContentWithForce:NO];
     }
     else
     {
         [[ContentManager sharedInstance] setShouldNotify:NO];
         self.title = [tableFeatures valueForKey:@"title"];
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[ContentManager sharedInstance] setDelegate:self];
 }
+
 -(void)updateInformation:(id)sender
 {
+    [overlay showLoading];
+    [overlay subtleMessage:@"Checking for update..." withDelay:1.0];
+    
+    [self.tableView setUserInteractionEnabled:NO];
     [[ContentManager sharedInstance] updateContentWithForce:YES];
 }
 
--(void)updatedInformation:(id)sender
+-(void)contentUpdated:(BOOL)b withMessage:(NSString *)str
 {
-    tableFeatures = [[ContentManager sharedInstance] content];
+    NSLog(@"Update string: %@",str);
+
+    if(![str isEqualToString:@"external_files"])
+    {
+        tableFeatures = [[ContentManager sharedInstance] content];
+        [overlay hideLoading];
+        if(![str isEqualToString:@""] && isFirstLoad==NO)
+        {
+            if(b)
+                [overlay subtleMessage:str withDelay:2.0];
+            else
+                [overlay subtleMessage:str withDelay:2.0];
+        }
+        self.title = [tableFeatures valueForKey:@"title"];
+        [self.tableView setUserInteractionEnabled:YES];
+    }
+    isFirstLoad = NO;
+
     external_files = [[[ContentManager sharedInstance] content]  valueForKey:@"external_files"];
-    self.title = [tableFeatures valueForKey:@"title"];
+    
     [self.tableView reloadData];
+    
+    
 }
 
 - (void)viewDidUnload
@@ -93,7 +115,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;//(interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
@@ -260,7 +282,10 @@
 {
     [super dealloc];
 }
-
+-(UIView *)viewForOverlayDisplay
+{
+    return self.view;
+}
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.

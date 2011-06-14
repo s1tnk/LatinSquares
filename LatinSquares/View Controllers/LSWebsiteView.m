@@ -12,17 +12,33 @@
 @implementation LSWebsiteView
 @synthesize titleText, html, url;
 #pragma mark - View lifecycle
-
-
+/*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
+}
+*/
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     CGRect frame = [UIScreen mainScreen].applicationFrame;
-	self.view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 20.0, frame.size.width, frame.size.height )];
-	[self.view release];
+    float w,h;
+    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || 
+        ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight)) 
+        
+    {
+        w = frame.size.height;
+        h = frame.size.width;
+    } else {
+        w = frame.size.width;
+        h = frame.size.height;
+    }
+    
     self.navigationController.toolbarHidden = YES;
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,  self.view.frame.size.height-44)];
-    [self.view addSubview:webView];
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+
     [webView setDelegate:self];
     [webView setScalesPageToFit:YES];
     
@@ -35,77 +51,46 @@
     }
     else
     {
-        int w=320,h=480;
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-		{
-            w=768;
-            h=960;
-        }
-        NSString *htmlToDisplay = [NSString stringWithFormat:
-                                   @"<html>"
-                                   "<head>"
-                                   "<meta name=\"viewport\" content=\"width=%d\" /> "
-                                   "<meta name=\"viewport\" content=\"height=%d\" /> "
-                                   "<style>"
-                                   "body"
-                                   "{"
-                                   "background-color:#FFFFFF;"
-                                   "color:#333333;"
-                                   "font-family:helvetica;"
-                                   "}"
-                                   "h3"
-                                   "{"
-                                   "color:#1B2E69;"
-                                   "padding:2px;"
-                                   "text-align:center;"
-                                   "border-top:1px #333333 solid;"
-                                   "border-bottom:1px #333333 solid;"
-                                   "}"
-                                   "a:link"
-                                   "{"
-                                   "color:#C0240D;"
-                                   "}"
-                                   "a:visited"
-                                   "{"
-                                   "color:#C0240D;"
-                                   "}"
-                                   "</style>"
-                                   "</head>"
-                                   "<body><h2>%@</h2>%@</body></html>", w,h,titleText,html];
-        [webView loadHTMLString:htmlToDisplay baseURL:nil];
+        [self loadPrepackagedHTML];
     }
     self.title = titleText;
+    self.view = webView;
 }
-
--(void)webViewDidStartLoad:(UIWebView *)webView
+-(void)loadPrepackagedHTML
 {
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
--(void)webViewDidFinishLoad:(UIWebView *)webView
-{
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    self.navigationItem.prompt = @"This content requires an internet connection.";
-    NSLog(@"Error.");
-}
--(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
-    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[inRequest URL]];
-        return NO;
-    }
-    
-    return YES;
+    NSString *htmlToDisplay = [NSString stringWithFormat:
+                               @"<html>"
+                               "<head>"
+                               "<meta name=\"viewport\" content=\"width=device-width\" /> "
+                               "<style>"
+                               "body"
+                               "{"
+                               "background-color:#FFFFFF;"
+                               "color:#333333;"
+                               "font-family:helvetica;"
+                               "}"
+                               "h3"
+                               "{"
+                               "color:#1B2E69;"
+                               "padding:2px;"
+                               "text-align:center;"
+                               "border-top:1px #333333 solid;"
+                               "border-bottom:1px #333333 solid;"
+                               "}"
+                               "a:link"
+                               "{"
+                               "color:#C0240D;"
+                               "}"
+                               "a:visited"
+                               "{"
+                               "color:#C0240D;"
+                               "}"
+                               "</style>"
+                               "</head>"
+                               "<body><h2>%@</h2>%@</body></html>",titleText,html];
+    [webView loadHTMLString:htmlToDisplay baseURL:nil];
 }
 /*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)viewWillDisappear
 {
     
@@ -120,11 +105,43 @@
     // e.g. self.myOutlet = nil;
 }
 */
+
+
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    self.navigationItem.prompt = @"This content requires an internet connection.";
+    NSLog(@"Error: %@", error);
+}
+-(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
+    
+    return YES;
+}
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+    return YES;
 }
+/*
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    NSLog(@"width of webview = %f, height of hpv = %f",self.view.frame.size.width,self.view.frame.size.height);
+    [webView setFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height+44)];
+}
+ */
 - (void)dealloc
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

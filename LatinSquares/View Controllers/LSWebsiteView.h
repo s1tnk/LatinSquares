@@ -15,6 +15,7 @@
     NSString *url;
     UIWebView *webView;
 }
+-(void)loadPrepackagedHTML;
 @property (nonatomic, retain) NSString *titleText;
 @property (nonatomic, retain) NSString *html;
 @property (nonatomic, retain) NSString *url;

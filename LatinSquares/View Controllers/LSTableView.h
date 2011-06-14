@@ -10,10 +10,13 @@
 #import "ContentManager.h"
 #import "LSSquareView.h"
 #import "LSWebsiteView.h"
+#import "Overlay.h"
 
-@interface LSTableView : UITableViewController {
+@interface LSTableView : UITableViewController <OverlayDelegate, ContentManagerDelegate> {
     NSDictionary *tableFeatures;
+    Overlay *overlay;
     NSDictionary *external_files;
+    BOOL isFirstLoad;
 }
 @property(nonatomic, retain) NSDictionary *tableFeatures;
 @property(nonatomic, retain) NSDictionary *external_files;

@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 #import "DesignMCWrapper.h"
 #import "CUIHorizontalPickerView.h"
+#import "Overlay.h"
 
-@interface LSSquareView : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource> {
+@interface LSSquareView : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource, OverlayDelegate> {
     UIScrollView *sv;
     NSMutableArray *touchedArr;
     UIView *ls;
+    float padding;
     DesignMCWrapper *s;
     UIView *loading;
     UISegmentedControl *Move1btn, *Move20btn;
@@ -22,30 +23,32 @@
     NSDictionary *sqProperties;
     NSMutableDictionary *plistSquares;
     UIBarButtonItem *aboutBtn;
-    //UIBarButtonItem *toolsBtn;
-    //BOOL HasUserMovedFromCyclicSquare;
     BOOL AreBlocksPredefined;
     UIColor *cellColour;
-    //UIToolbar *toolbar;
     UISlider *red_slider;
     UISlider *blue_slider;
     UISlider *green_slider;
     UIView *propertiesView;
     BOOL isToolboxDisplayed;
     UIBarButtonItem *toolboxButton;
+    int toolbarOffset;
+    UIToolbar *toolbar;
+    UIButton *toolButton1;
+    UIButton *toolButton2;
+    CGSize cellSize;
+    Overlay *overlay;
 }
 -(NSDictionary*)getColour;
 -(id)initWithSquare:(DesignMCWrapper *)squareWrapper andProperties:(NSDictionary *)properties;
 -(void)showCyclicSquare;
 -(void)drawSquare;
--(void)showLoading;
--(void)hideLoading;
+//-(void)showLoading;
+//-(void)hideLoading;
 -(void)move1;
 -(void)move20;
-//-(void)enumerate;
 -(void)findTransversal;
 -(void)touchedCell:(id)sender;
--(void)subtleMessage:(NSString *)str withDelay:(float)d;
+//-(void)subtleMessage:(NSString *)str withDelay:(float)d;
 -(void)interfaceEnabled:(BOOL)b;
 -(void)colourGridSquare:(int)tag;
 @end

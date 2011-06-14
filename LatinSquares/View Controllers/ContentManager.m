@@ -10,7 +10,7 @@
 
 
 @implementation ContentManager
-@synthesize content,ShouldNotify;
+@synthesize content,ShouldNotify,delegate;
 
 + (ContentManager *) sharedInstance
 {
@@ -42,7 +42,7 @@
     NSURL *url = [NSURL URLWithString:@"http://server.andydrizen.co.uk/latinsquares/content.js"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     if(shouldForce)
-        request.tag = 1;
+        request.tag = 99;
     else
         request.tag = 0;
     [request setDelegate:self];
@@ -53,11 +53,24 @@
 {
     NSLog(@"Update finished.");
     NSDictionary *response = [[request responseString] JSONValue];
-    if([[response valueForKey:@"last_updated"] isEqualToString:[content valueForKey:@"last_updated"]] && [request tag]==0)
+    BOOL shouldUpdate = YES;
+    BOOL areThereUpdates;
+    NSString *updates_str;
+    if([[response valueForKey:@"version"] isEqualToString:[content valueForKey:@"version"]])
     {
-        NSLog(@"No updates.");
-    }
+        shouldUpdate = NO;
+        areThereUpdates = NO;
+        updates_str=[NSString stringWithFormat:@"You are already up-to-date\n(%@)",[response valueForKey:@"version"]];
+    } 
     else
+    {
+        areThereUpdates = YES;
+        updates_str=[NSString stringWithFormat:@"Updated succesfully!\n(%@)",[response valueForKey:@"version"]];
+    }
+    if([request tag]==99)
+        shouldUpdate = YES;
+    
+    if(shouldUpdate)
     {
         if(content)
             [content autorelease];
@@ -67,7 +80,8 @@
     }
     [self downloadExternalFiles];
     if(ShouldNotify)
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
+        [delegate contentUpdated:areThereUpdates withMessage:updates_str];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
 }
 - (void)downloadExternalFiles
 {
@@ -99,13 +113,15 @@
     [content writeToFile:contentPlistPath atomically:YES];
 
     if(ShouldNotify)
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"fileDownloaded" object:nil];
+        [delegate contentUpdated:YES withMessage:@"external_files"];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"fileDownloaded" object:nil];
 }
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
     NSError *error = [request error];
     NSLog(@"Error updating content: %@",error);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
+    [delegate contentUpdated:NO withMessage:@"There was an error"];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"contentUpdateFinished" object:nil];
 }
 
 @end
