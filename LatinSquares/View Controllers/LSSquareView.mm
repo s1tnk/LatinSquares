@@ -20,6 +20,7 @@
         blockSet bs;
         s.square = new Square(8, bs);
         AreBlocksPredefined = NO;
+        AllowPertubation = YES;
     }
     return self;
 }
@@ -30,6 +31,7 @@
         s = [squareWrapper retain];
         AreBlocksPredefined = YES;
         sqProperties = [properties retain];
+        AllowPertubation = [[sqProperties valueForKey:@"AllowPertubation"] boolValue];
     }
     return self;
 }
@@ -60,7 +62,7 @@
 	[self.view release];
     isToolboxDisplayed = NO;
     toolbarOffset = 0;
-    if(!AreBlocksPredefined || [[sqProperties valueForKey:@"allowPertubation"] boolValue])
+    if(!AreBlocksPredefined || AllowPertubation)
     {
         toolbarOffset = 1;
         hpv = [[[CUIHorizontalPickerView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 44.0)] retain];
@@ -75,16 +77,6 @@
     sv = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44.0*toolbarOffset, w, h-2*44-44*toolbarOffset)];
     sv.delegate = self;
     [self.view addSubview:sv];
-
-//    loading = [[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-30, self.view.frame.size.height/2-60, 60, 60)] retain];
-//    [loading setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
-//    UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    act.frame = CGRectMake(20.0, 20.0, 20, 20);
-//    [act startAnimating];
-//    loading.layer.cornerRadius = 10.0;
-//    [loading addSubview:act];
-//    loading.alpha = 0;
-//    [self.view addSubview:loading];
 
     if(!AreBlocksPredefined)
     {
@@ -117,7 +109,7 @@
     [propertiesView addSubview:toolbar];
     [toolbar release];
     
-    if(!AreBlocksPredefined)
+    if(AllowPertubation)
     {
         red_slider = [[UISlider alloc] initWithFrame:CGRectMake(75.0, 65, self.view.frame.size.width-95, 40)];
         red_slider.minimumValue = 0.0;
@@ -169,9 +161,15 @@
     }
 
     toolButton1 = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-    [toolButton1 addTarget:self action:@selector(pressedToolButton1:) forControlEvents:UIControlEventTouchUpInside];
+    toolButton1.tag = 11;
+    [toolButton1 addTarget:self action:@selector(pressedToolButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    if(AreBlocksPredefined)
+    [toolButton1.titleLabel setNumberOfLines:2];
+    [toolButton1.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    toolButton1.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+    toolButton1.titleLabel.textAlignment = UITextAlignmentCenter;
+    
+    if(!AllowPertubation)
     {
         [toolButton1 setTitle:@"Tell me about this square" forState:UIControlStateNormal];
         [toolButton1 setFrame:CGRectMake(10.0, 50, self.view.frame.size.width-20.0, 44)];
@@ -179,54 +177,38 @@
     else
     {
         [toolButton1 setTitle:@"New Square" forState:UIControlStateNormal];
-        [toolButton1 setFrame:CGRectMake(10.0, 190, self.view.frame.size.width/2-20.0, 44)];
+        [toolButton1 setFrame:CGRectMake(10.0, 190, self.view.frame.size.width/4-20.0, 44)];
         
         toolButton2 = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-        [toolButton2 addTarget:self action:@selector(pressedToolButton2:) forControlEvents:UIControlEventTouchUpInside];
+        toolButton2.tag = 12;
+        [toolButton2 addTarget:self action:@selector(pressedToolButton:) forControlEvents:UIControlEventTouchUpInside];
+        [toolButton2 setTitle:@"Show Trans." forState:UIControlStateNormal];
+        [toolButton2 setFrame:CGRectMake(self.view.frame.size.width/4+10.0, 190, self.view.frame.size.width/4-20.0, 44)];
+        [toolButton2.titleLabel setNumberOfLines:2];
+        [toolButton2.titleLabel setAdjustsFontSizeToFitWidth:YES];
+        toolButton2.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+        toolButton2.titleLabel.minimumFontSize = 8.0;
+        toolButton2.titleLabel.textAlignment = UITextAlignmentCenter;
+    
         
-        [toolButton2 setTitle:@"Show Transversal" forState:UIControlStateNormal];
-        [toolButton2 setFrame:CGRectMake(self.view.frame.size.width/2+10.0, 190, self.view.frame.size.width/2-20.0, 44)];
         [propertiesView addSubview:toolButton2];
+        
+        toolButton3 = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        toolButton3.tag = 13;
+        [toolButton3 addTarget:self action:@selector(pressedToolButton:) forControlEvents:UIControlEventTouchUpInside];
+        [toolButton3 setTitle:@"Export" forState:UIControlStateNormal];
+        [toolButton3 setFrame:CGRectMake(2*self.view.frame.size.width/4+10.0, 190, self.view.frame.size.width/4-20.0, 44)];
+        [propertiesView addSubview:toolButton3];
+        
+        toolButton4 = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        toolButton4.tag = 14;
+        [toolButton4 addTarget:self action:@selector(pressedToolButton:) forControlEvents:UIControlEventTouchUpInside];
+        [toolButton4 setTitle:@"Import" forState:UIControlStateNormal];
+        [toolButton4 setFrame:CGRectMake(3*self.view.frame.size.width/4+10.0, 190, self.view.frame.size.width/4-20.0, 44)];
+        [propertiesView addSubview:toolButton4];
     }
     
     [propertiesView addSubview:toolButton1];
-}
--(void)toggleToolbox:(id)sender
-{
-    NSLog(@"Toggling toolbox");
-    if(isToolboxDisplayed)
-    {
-        NSLog(@"Hiding toolbox");
-        [toolboxButton setTitle:@"Open Toolbox"];
-        isToolboxDisplayed = NO; 
-        [UIView beginAnimations:@"displayToolbox" context:nil];
-		[UIView setAnimationDuration:0.3];
-		[UIView setAnimationBeginsFromCurrentState:YES];
-		[UIView setAnimationDelegate:self];
-            [propertiesView setFrame:CGRectMake(0.0, self.view.frame.size.height-2*44+44, self.view.frame.size.width, 44+200)];
-		[UIView commitAnimations];
-    }
-    else
-    {
-        float propertiesViewY;
-        if(AreBlocksPredefined)
-        {
-            propertiesViewY = self.view.frame.size.height-100;
-        }
-        else
-        {
-            propertiesViewY = self.view.frame.size.height-propertiesView.frame.size.height;
-        }
-        NSLog(@"Showing toolbox");
-        [toolboxButton setTitle:@"Close Toolbox"];
-        isToolboxDisplayed = YES;
-        [UIView beginAnimations:@"hideToolbox" context:nil];
-		[UIView setAnimationDuration:0.3];
-		[UIView setAnimationBeginsFromCurrentState:YES];
-		[UIView setAnimationDelegate:self];
-            [propertiesView setFrame:CGRectMake(0.0, propertiesViewY, self.view.frame.size.width, 44+200)];
-		[UIView commitAnimations];
-    }
 }
 -(void)interfaceEnabled:(BOOL)b
 {
@@ -248,105 +230,208 @@
     }
     
 }
-//-(void)showLoading
-//{
-//    [UIView animateWithDuration:0.5 
-//                          delay:0 
-//                        options:UIViewAnimationCurveEaseIn
-//                     animations:^{
-//                         loading.alpha = 1.0;
-//                     }  
-//                     completion:nil
-//     ];
-//
-//}
-//-(void)hideLoading
-//{
-//    [UIView animateWithDuration:0.5 
-//                          delay:0 
-//                        options:nil 
-//                     animations:^{
-//                                     loading.alpha = 0.0;
-//                                 }  
-//                     completion:^(BOOL finished)
-//                                 {
-//                                 }
-//     ];
-//}
-//-(void)subtleMessage:(NSString *)str withDelay:(float)d inView:(UIView *)v
-//{
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(v.frame.size.width/2-80, v.frame.size.height/2-50, 160, 80)];
-//    [view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.9]];
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 5.0, view.frame.size.width-10, view.frame.size.height-10)];
-//    [label setTextAlignment:UITextAlignmentCenter];
-//    [label setText:str];
-//    [label setBackgroundColor:[UIColor clearColor]];
-//    [label setTextColor:[UIColor whiteColor]];
-//    [label setAdjustsFontSizeToFitWidth:YES];
-//    [label setNumberOfLines:0];
-//    [label setLineBreakMode:UILineBreakModeWordWrap];
-//    [view addSubview:label];
-//    [label release];
-//    [view setAlpha:0];
-//    view.layer.cornerRadius = 10.0;
-//    [self.view addSubview:view];
-//    [UIView animateWithDuration:0.5 
-//                          delay:0 
-//                        options:nil 
-//                     animations:^{
-//                         view.alpha = 1.0;                                    
-//                     }  
-//                     completion:nil
-//     ];
-//    
-//    [UIView animateWithDuration:0.5 
-//                          delay:d
-//                        options:nil 
-//                     animations:^{
-//                                    view.alpha = 0;                                    
-//                                }  
-//                     completion:^(BOOL finished)
-//                                {
-//                                    [view release];
-//                                }
-//     ];
-//}
-
--(void)pressedToolButton1:(id)sender
+-(void)toggleToolbox:(id)sender
 {
-    [self performSelector:@selector(toggleToolbox:) withObject:nil];
-    if(!AreBlocksPredefined)
+    NSLog(@"Toggling toolbox");
+    if(isToolboxDisplayed)
     {
-        [self interfaceEnabled:NO];
-        [overlay showLoading];
-        [self performSelectorInBackground:@selector(move20) withObject:nil];
+        NSLog(@"Hiding toolbox");
+        [toolboxButton setTitle:@"Open Toolbox"];
+        isToolboxDisplayed = NO; 
+        [UIView beginAnimations:@"displayToolbox" context:nil];
+		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDelegate:self];
+            [propertiesView setFrame:CGRectMake(0.0, self.view.frame.size.height-2*44+44, self.view.frame.size.width, 44+200)];
+		[UIView commitAnimations];
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"More Infomation" message:[sqProperties valueForKey:@"description"] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-    }
-}
--(void)pressedToolButton2:(id)sender
-{
-    [self performSelector:@selector(toggleToolbox:) withObject:nil];
-    if(s.square->getVType() == 2)
-    {
-        [overlay subtleMessage:@"No Latin square on 2 points has a transversal." withDelay:2.5];
-    }
-    else
-    {
-        [overlay showLoading];
-        [self performSelectorInBackground:@selector(findTransversal) withObject:nil];
+        float propertiesViewY;
+        if(!AllowPertubation)
+        {
+            propertiesViewY = self.view.frame.size.height-100;
+        }
+        else
+        {
+            propertiesViewY = self.view.frame.size.height-propertiesView.frame.size.height;
+        }
+        NSLog(@"Showing toolbox");
+        [toolboxButton setTitle:@"Close Toolbox"];
+        isToolboxDisplayed = YES;
+        [UIView beginAnimations:@"hideToolbox" context:nil];
+		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDelegate:self];
+            [propertiesView setFrame:CGRectMake(0.0, propertiesViewY, self.view.frame.size.width, 44+200)];
+		[UIView commitAnimations];
     }
 }
 
+
+-(void)pressedToolButton:(id)sender
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    
+    NSMutableDictionary *exportSquare;
+    NSMutableArray *block_set;
+    NSMutableArray *highlightSet;
+    NSMutableArray *highlightColours;
+    
+    NSDictionary *newSquare;
+    blockSet blocks;
+    
+    switch ([sender tag]) 
+    {
+        case 11:
+            [self performSelector:@selector(toggleToolbox:) withObject:nil];
+            if(AllowPertubation)
+            {
+                [self interfaceEnabled:NO];
+                [overlay showLoading];
+                [self performSelectorInBackground:@selector(move20) withObject:nil];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"More Infomation" message:[sqProperties valueForKey:@"description"] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+            }
+            break;
+        case 12:
+            [self performSelector:@selector(toggleToolbox:) withObject:nil];
+            if(s.square->getVType() == 2)
+            {
+                [overlay subtleMessage:@"No Latin square on 2 points has a transversal." withDelay:2.5];
+            }
+            else
+            {
+                [overlay showLoading];
+                [self performSelectorInBackground:@selector(findTransversal) withObject:nil];
+            }
+            break;
+        case 13:
+            exportSquare = [[NSMutableDictionary alloc] initWithCapacity:100];
+            block_set = [[NSMutableArray alloc] initWithCapacity:500];
+            highlightSet = [[NSMutableArray alloc] initWithCapacity:500];
+            highlightColours = [[NSMutableArray alloc] initWithCapacity:500];
+            
+            [exportSquare setValue:@"LSSquareView" forKey:@"content_type"];
+            [exportSquare setValue:@"My square" forKey:@"title"];
+            [exportSquare setValue:@"" forKey:@"subtitle"];
+            [exportSquare setValue:@"" forKey:@"description"];
+            [exportSquare setValue:[NSNumber numberWithInt:s.square->getVType()] forKey:@"n"];
+            [exportSquare setValue:@"1" forKey:@"allowPertubation"];
+            [exportSquare setValue:@"1" forKey:@"allowRecolouring"];
+
+            
+            
+            for(unsigned int i=0; i < s.square->getVType(); i++)
+            {
+                for(unsigned int j=0; j < s.square->getVType(); j++)
+                {
+                    BOOL isBlockHighlighted = NO;
+                    int cell_tag = i*s.square->getVType()+j+2;
+                    if([touchedArr containsObject:[NSNumber numberWithInt:cell_tag]])
+                        isBlockHighlighted = YES;
+                    NSArray *tmpArray = [NSArray arrayWithObjects:  [NSNumber numberWithInt:i], 
+                                         [NSNumber numberWithInt:s.square->getVType()+j], 
+                                         [NSNumber numberWithInt:s.square->getBlocks()[i*s.square->getVType()+j][2]],
+                                         nil];
+                    [block_set addObject:tmpArray];
+                    if(isBlockHighlighted)
+                    {
+                        [highlightSet addObject:tmpArray];
+                        const CGFloat *components = CGColorGetComponents([[ls viewWithTag:cell_tag] viewWithTag:500].backgroundColor.CGColor);
+                        NSMutableDictionary *hc = [[NSMutableDictionary alloc] initWithCapacity:4];
+                        [hc setValue:[NSNumber numberWithFloat:components[0]] forKey:@"red"];
+                        [hc setValue:[NSNumber numberWithFloat:components[1]] forKey:@"green"];
+                        [hc setValue:[NSNumber numberWithFloat:components[2]] forKey:@"blue"];
+                        [hc setValue:[NSNumber numberWithFloat:components[3]] forKey:@"alpha"];
+                        
+                        [highlightColours addObject:hc];
+                        [hc release];
+                        //NSLog(@"components = %f, %f, %f, %f", components[0], components[1], components[2], components[3]);
+                    }
+                }
+            }
+            [exportSquare setValue:block_set forKey:@"blocks"];
+            [exportSquare setValue:highlightSet forKey:@"highlight_blocks"];
+            [exportSquare setValue:highlightColours forKey:@"highlight_blocks_colours"];
+            NSLog(@"square: %@", [exportSquare JSONRepresentation] );
+            
+            pasteboard.string = [exportSquare JSONRepresentation];
+            
+            
+            /*
+            if ([MFMailComposeViewController canSendMail])
+            {
+                MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+                [controller setSubject:@"Interesting square!"];
+                controller.mailComposeDelegate = self;
+                [controller setMessageBody:[exportSquare JSONRepresentation] isHTML:NO];
+                [self presentModalViewController:controller animated:YES];
+                [controller release];
+            }
+            else
+            {
+                [overlay subtleMessage:@"You cannot send emails from this device. I've copied the square to the clipboard instead." withDelay:2.0];
+            }
+             */
+            [overlay subtleMessage:@"Copied to clipboard." withDelay:2.0];
+            [exportSquare release];
+            
+            [block_set release];
+            [highlightSet release];
+            [highlightColours release];
+            
+            break;
+        case 14:
+            newSquare = [pasteboard.string JSONValue];
+            if(!newSquare)
+            {
+                [overlay subtleMessage:@"Import failed - to use this feature, copy the square from, say, your email, and then come back to this app and press the import button again." withDelay:3.0];
+            }
+            self.title = [newSquare valueForKey:@"title"];
+
+            
+            for(int i=0; i <[[newSquare valueForKey:@"blocks"] count] ; i++)
+            {
+                block b;
+                NSArray *a = [[newSquare valueForKey:@"blocks"] objectAtIndex:i];
+                b.push_back([[a objectAtIndex:0] intValue]);
+                b.push_back([[a objectAtIndex:1] intValue]);
+                b.push_back([[a objectAtIndex:2] intValue]);
+                blocks.push_back(b);
+            }
+            s.square = new Square([[newSquare valueForKey:@"n"] intValue], blocks);            
+            [sqProperties autorelease];
+            sqProperties = [newSquare retain];
+            NSLog(@"new square: %@", [sqProperties JSONRepresentation]);
+            AreBlocksPredefined = YES;
+            [self drawSquare];
+            [hpv scrollToPositionItem:[[newSquare valueForKey:@"n"] intValue]-2 animated:YES];
+            
+            
+            break;
+        default:
+            break;
+    }
+}
+/*
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    [overlay subtleMessage:@"Copied to clipboard." withDelay:2.0];
+    NSLog(@"error: %@", error);
+	[self becomeFirstResponder];
+	[self dismissModalViewControllerAnimated:YES];
+}
+*/
 -(void)findTransversal
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
         
         // clear any coloured squares first.
+        [sqProperties setValue:nil forKey:@"highlight_blocks"];
         [self drawSquare];
         [overlay showLoading];
         int limit = 50000;
@@ -409,6 +494,7 @@
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
         s.square->manyStepsProper(1);
+        [sqProperties setValue:nil forKey:@"highlight_blocks"];
         [self drawSquare];
     [pool release];
 }
@@ -417,6 +503,7 @@
 {
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
         s.square->manyStepsProper(20);
+        [sqProperties setValue:nil forKey:@"highlight_blocks"];
         [self drawSquare];
     [pool release];
 }
@@ -445,12 +532,13 @@
     [sv addSubview:ls];
     sv.contentSize = CGSizeMake(ls.frame.size.width, ls.frame.size.height);
     sv.zoomScale = sv.minimumZoomScale;
+    
     for(unsigned int i=0; i < s.square->getVType(); i++)
     {
         for(unsigned int j=0; j < s.square->getVType(); j++)
         {
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake(i*cellSize.width+padding, j*cellSize.height+padding, cellSize.width-2*padding, cellSize.height-2*padding);
+            button.frame = CGRectMake(j*cellSize.width+padding, i*cellSize.height+padding, cellSize.width-2*padding, cellSize.height-2*padding);
             button.tag = j*s.square->getVType()+i+2;
             
             button.backgroundColor = [UIColor blackColor];
@@ -462,7 +550,7 @@
             label.adjustsFontSizeToFitWidth = YES;
             label.textAlignment = UITextAlignmentCenter;
             label.tag=500;
-            if(AreBlocksPredefined && ![[sqProperties valueForKey:@"allowRecolouring"] boolValue])
+            if(!AllowPertubation && ![[sqProperties valueForKey:@"allowRecolouring"] boolValue])
             {
                 button.userInteractionEnabled = NO;
             }
@@ -474,6 +562,7 @@
                                      nil];
                 if([[sqProperties valueForKey:@"highlight_blocks"] containsObject:tmpArray])
                 {
+                    [touchedArr addObject:[NSNumber numberWithInt:button.tag]];
                     NSNumber *index = [NSNumber numberWithInt:[[sqProperties valueForKey:@"highlight_blocks"] indexOfObject:tmpArray]];
                     CGFloat r = [[[[sqProperties valueForKey:@"highlight_blocks_colours"] objectAtIndex:[index intValue]] valueForKey:@"red"] floatValue];
                     CGFloat g = [[[[sqProperties valueForKey:@"highlight_blocks_colours"] objectAtIndex:[index intValue]] valueForKey:@"green"] floatValue];
@@ -484,7 +573,8 @@
                     label.textColor = [UIColor whiteColor];
                 }
             }
-            label.text = [NSString stringWithFormat:@"%d",s.square->getBlocks()[j*s.square->getVType()+i][2]+1-2*s.square->getVType()];
+            label.text = [NSString stringWithFormat:@"%d",s.square->getBlocks()[i+j*s.square->getVType()][2]+1-2*s.square->getVType()];
+            //label.text = [NSString stringWithFormat:@"%d, %d,%d",i,j,s.square->getBlocks()[i+j*s.square->getVType()][2]];
             [button addSubview:label];
             [label release];
             [ls addSubview:button];
@@ -572,7 +662,7 @@
 
 - (NSInteger)numberOfColumsInHorizontalPickerView:(CUIHorizontalPickerView *)horizontalPickerView
 {
-    return 14;
+    return 17;
 }
 
 - (void)viewDidUnload
@@ -618,14 +708,16 @@
         [red_slider setFrame:CGRectMake(75.0, 65, w-95, 40)];
         [green_slider setFrame:CGRectMake(75.0, 105, w-95, 40)];
         [blue_slider setFrame:CGRectMake(75.0, 145, w-95, 40)];
-        if(AreBlocksPredefined)
+        if(!AllowPertubation)
         {
             [toolButton1 setFrame:CGRectMake(10.0, 50, w-20.0, 44)];
         }
         else
         {
-            [toolButton1 setFrame:CGRectMake(10.0, 190, w/2-20.0, 44)];
-            [toolButton2 setFrame:CGRectMake(w/2+10.0, 190, w/2-20.0, 44)];
+            [toolButton1 setFrame:CGRectMake(10.0, 190, w/4-20.0, 44)];
+            [toolButton2 setFrame:CGRectMake(w/4+10.0, 190, w/4-20.0, 44)];
+            [toolButton3 setFrame:CGRectMake(2*w/4+10.0, 190, w/4-20.0, 44)];
+            [toolButton4 setFrame:CGRectMake(3*w/4+10.0, 190, w/4-20.0, 44)];
         }
 
         [loading setFrame:CGRectMake(w/2-30, h/2-60, 60, 60)];

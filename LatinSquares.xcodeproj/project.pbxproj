@@ -13,6 +13,8 @@
 		A1203B38135A0220006B5736 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1203B37135A021F006B5736 /* Default@2x.png */; };
 		A12FC0D113A7490000AA5A31 /* Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A12FC0D013A7490000AA5A31 /* Overlay.m */; };
 		A15E32A3139FFCC1001E9AE0 /* red_min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = A15E32A2139FFCC1001E9AE0 /* red_min_track.png */; };
+		A189A02D13BA260C007EA8F8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A189A02C13BA260C007EA8F8 /* QuartzCore.framework */; };
+		A189A03013BA2C6B007EA8F8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A189A02F13BA2C6B007EA8F8 /* MessageUI.framework */; };
 		A1A4CD5713634E4600A72098 /* LSTableView.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1A4CD5613634E4600A72098 /* LSTableView.mm */; };
 		A1A961AC13A002F00051089C /* green_min_track.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A961AB13A002F00051089C /* green_min_track.png */; };
 		A1C48AAC1359DA2B008A923D /* DesignMC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C48A941359DA2B008A923D /* DesignMC.cpp */; };
@@ -63,6 +65,8 @@
 		A12FC0CF13A7490000AA5A31 /* Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Overlay.h; path = ../../../../../../andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/Overlay.h; sourceTree = "<group>"; };
 		A12FC0D013A7490000AA5A31 /* Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Overlay.m; path = ../../../../../../andy/Dropbox/Programming/iOS/LatinSquares/LatinSquares/Overlay.m; sourceTree = "<group>"; };
 		A15E32A2139FFCC1001E9AE0 /* red_min_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_min_track.png; sourceTree = "<group>"; };
+		A189A02C13BA260C007EA8F8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A189A02F13BA2C6B007EA8F8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A1A4CD5513634E4600A72098 /* LSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSTableView.h; sourceTree = "<group>"; };
 		A1A4CD5613634E4600A72098 /* LSTableView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LSTableView.mm; sourceTree = "<group>"; };
 		A1A961AB13A002F00051089C /* green_min_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_min_track.png; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A189A03013BA2C6B007EA8F8 /* MessageUI.framework in Frameworks */,
+				A189A02D13BA260C007EA8F8 /* QuartzCore.framework in Frameworks */,
 				A119552913A0AA2E00EE4673 /* libz.1.2.3.dylib in Frameworks */,
 				A1F04275138FFE8700EF08C8 /* CFNetwork.framework in Frameworks */,
 				A1FC95F91359927600F5606D /* CoreGraphics.framework in Frameworks */,
@@ -295,6 +301,8 @@
 		A1FC95F31359927600F5606D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A189A02F13BA2C6B007EA8F8 /* MessageUI.framework */,
+				A189A02C13BA260C007EA8F8 /* QuartzCore.framework */,
 				A119552813A0AA2E00EE4673 /* libz.1.2.3.dylib */,
 				A1F04270138FFE8600EF08C8 /* CFNetwork.framework */,
 				A1F04271138FFE8600EF08C8 /* CoreGraphics.framework */,

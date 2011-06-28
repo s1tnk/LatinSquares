@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <MessageUI/MessageUI.h>
+
 #import "DesignMCWrapper.h"
 #import "CUIHorizontalPickerView.h"
 #import "Overlay.h"
+#import "JSON.h"
 
-@interface LSSquareView : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource, OverlayDelegate> {
+
+@interface LSSquareView : UIViewController <UIActionSheetDelegate, UIScrollViewDelegate, CUIHorizontalPickerViewDelegate, CUIHorizontalPickerViewDataSource, OverlayDelegate, MFMailComposeViewControllerDelegate> {
     UIScrollView *sv;
     NSMutableArray *touchedArr;
     UIView *ls;
@@ -23,7 +28,7 @@
     NSDictionary *sqProperties;
     NSMutableDictionary *plistSquares;
     UIBarButtonItem *aboutBtn;
-    BOOL AreBlocksPredefined;
+    BOOL AreBlocksPredefined,AllowPertubation;
     UIColor *cellColour;
     UISlider *red_slider;
     UISlider *blue_slider;
@@ -33,8 +38,7 @@
     UIBarButtonItem *toolboxButton;
     int toolbarOffset;
     UIToolbar *toolbar;
-    UIButton *toolButton1;
-    UIButton *toolButton2;
+    UIButton *toolButton1,*toolButton2,*toolButton3,*toolButton4;
     CGSize cellSize;
     Overlay *overlay;
 }
