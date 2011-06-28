@@ -387,6 +387,10 @@
             
             break;
         case 14:
+            [self performSelector:@selector(toggleToolbox:) withObject:nil];
+            [self interfaceEnabled:NO];
+            [overlay showLoading];
+
             newSquare = [pasteboard.string JSONValue];
             if(!newSquare)
             {
@@ -691,7 +695,7 @@
     NSLog(@"width of hpv = %f, height of hpv = %f",w,h);
     [sv setFrame:CGRectMake(0, 44.0*toolbarOffset, w, h-44-44*toolbarOffset)];
     sv.minimumZoomScale = MIN(1.0, MIN(w,h-44*2)/(s.square->getVType()*cellSize.width));
-    [sv setZoomScale:sv.minimumZoomScale];
+    //[sv setZoomScale:sv.minimumZoomScale];
 
     [UIView beginAnimations:@"rotate" context:nil];
     [UIView setAnimationDuration:0.2];
